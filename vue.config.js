@@ -17,7 +17,7 @@ module.exports = {
       /* 自动打开浏览器 */
       open: true,
       /* 设置为0.0.0.0则所有的地址均能访问 */
-      host: 'localhost',
+      host: '0.0.0.0',
       port: 8066,
       https: false,
       hotOnly: false,

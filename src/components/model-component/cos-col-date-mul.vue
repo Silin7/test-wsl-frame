@@ -1,13 +1,25 @@
-<!--日期 表单组件-->
-<!--案列：-->
+<!-- 表单组件 - 开始结束日期 -->
+<!-- 案列：
+  1.引入：import coscoldate from '@/components/model-component/cos-col-date'
+  2.注册：'cos-col-date': coscoldate
+  3.使用：<cos-col-date coslabel="" cosprop="" cospropBoolean="" cospropMsg="" v-bind:modelfeild.sync="" startPlaceholder="" endPlaceholder="" startDate="" endDate="" flag=""></cos-col-date>
+-->
 <!--说明：
-  coltype：宽度样式(默认0.25，不可以用分数) 例:coltype="0.5"
-  cospropBoolean: 是否必填（默认true） true false
-  cospropMsg: 必填提示信息(默认请输入)
+  coltype：宽度样式（默认0.25）
+  coslabel：label标题
+  cosprop：表单的prop属性
+  cospropBoolean：是否必填（默认：true）
+  cospropMsg：必填提示信息(默认：请输入)
+  startPlaceholder：开始日期格式
+  endPlaceholder：结束日期格式
+  placeholder：提示符
   startDate：范围限制时间开始时间
-  endDate:范围限制时间结束时间
+  endDate：范围限制时间结束时间
+  picker-options：当前时间日期选择器特有的选项参考下表
+  flag： 是否禁用 （禁用：'view' 'handle'）
 -->
 <!--注意：
+  picker-options：object类型
   modelfeild：type格式为数组
 -->
 <template>

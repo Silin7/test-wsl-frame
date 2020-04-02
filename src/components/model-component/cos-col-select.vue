@@ -2,7 +2,7 @@
 <!-- 案列：
   1.引入：import coscolselect from '@/components/model-component/cos-col-select'
   2.注册：'cos-col-select': coscolselect
-  3.使用：<cos-col-select coslabel="" cosprop="" cospropBoolean="" cospropMsg="" v-bind:modelfeild.sync="" loading="" loadingText="" flag="" cosList=""></cos-col-select>
+  3.使用：<cos-col-select coslabel="" cosprop="" cospropBoolean="" cospropMsg="" v-bind:modelfeild.sync="" flag="" cosList=""></cos-col-select>
 -->
 <!-- 说明：
   coltype：宽度样式(默认0.25)
@@ -12,8 +12,6 @@
   cospropMsg：必填提示信息（默认：请输入）
   filterable：是否可搜索（默认：true）
   allow-create：是否允许用户创建新条目，需配合 filterable 使用（默认：true）
-  loading：是否正在从远程获取数据（默认：true）
-  loading-text：远程加载时显示的文字
   cosList：选项列表
 -->
 <!-- 注意：
@@ -31,8 +29,6 @@
         clearable
         :allow-create="true"
         @change="setSelect"
-        :loading="loadingme"
-        :loading-text='loadingText'
         :disabled="(flag === 'view'|| flag === 'handle' )? true : false">
         <el-option
           v-for="item in cosList"
@@ -71,13 +67,6 @@
         type: String,
         default:''
       },
-      loading: {
-        type: Boolean
-      },
-      loadingText: {
-        type: String,
-        default: '正在加载中，请稍后.......'
-      },
       flag: {
         type: String
       },
@@ -90,14 +79,9 @@
       if (this.modelfeild) {
         this.modelfeildme = this.modelfeild
       }
-      if (this.loading) {
-        this.loadingme = this.loading
-      }
     },
     data() {
       return {
-        // 是否正在从远程获取数据
-        loadingme: true,
         modelfeildme: ''
       }
     },

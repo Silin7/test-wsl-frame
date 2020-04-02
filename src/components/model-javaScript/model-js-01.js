@@ -32,7 +32,7 @@ export default {
     return null
   },
   // 单个日期选择，根据 type 属性，返回相应格式的字符串
-  formartDate2 (param, type) {
+  formartDate2(param, type) {
     if (param !== undefined && param !== null && (typeof param === 'object')) {
       let date = param
       let Y = date.getFullYear() + '-'
@@ -62,8 +62,6 @@ export default {
         let D = item.getDate() < 10 ? '0' + item.getDate() + '' : item.getDate() + ''
         dateArry.push(Y + M + D)
       })
-      console.log('date', date)
-      console.log('dateArry', dateArry)
       return dateArry
     }
   }

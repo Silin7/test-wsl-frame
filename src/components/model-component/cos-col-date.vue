@@ -14,7 +14,7 @@
       <el-date-picker
         v-model="modelfeildme"
         :type="datetype"
-        @change="setInput"
+        @change="setDate"
         :placeholder="placeholder"
         :startDate="startDate"
         :endDate="endDate"
@@ -75,7 +75,7 @@
       }
     },
     created() {
-      this.setDate()
+      this.modelfeildme = this.modelfeild
     },
     data() {
       return {
@@ -98,9 +98,6 @@
     watch: {
       'modelfeild' (newVal, oldVal) {
         this.modelfeildme = this.modelfeild
-        if (this.modelfeildme !== undefined) {
-          this.setInput()
-        }
       }
     },
     methods: {
@@ -108,22 +105,6 @@
         return colSize.getColSize(type, val)
       },
       setDate () {
-        this.modelfeildme = this.modelfeild
-        if (this.modelfeildme === null || this.modelfeildme === '' || this.modelfeildme === undefined) {
-          if (this.cosdate === 'now') {
-            this.modelfeildme = new Date()
-            this.$emit('update:modelfeild', colSize.formartDate2(this.modelfeildme, this.datetype))
-          } else if (this.cosdate !== null && this.cosdate !== '' && this.cosdate !== undefined) {
-            this.modelfeildme = this.cosdate
-            this.$emit('update:modelfeild', colSize.formartDate2(this.modelfeildme, this.datetype))
-          } else {
-            this.$emit('update:modelfeild', colSize.formartDate2(this.modelfeildme, this.datetype))
-          }
-        } else {
-          this.$emit('update:modelfeild', colSize.formartDate2(this.modelfeildme, this.datetype))
-        }
-      },
-      setInput () {
         this.$emit('update:modelfeild', colSize.formartDate2(this.modelfeildme, this.datetype))
       }
     }

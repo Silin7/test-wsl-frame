@@ -1,8 +1,8 @@
 <!-- 表单组件 - select多选 -->
 <!-- 案列：
-  1.引入：import coscolselectmul from '@/components/model-component/model-select-mul'
-  2.注册：'cos-col-select-mul': coscolselect
-  3.使用：<cos-col-select-mul v-bind:modelfeild.sync="mainModel.floorPrice" coslabel="select选择器" :flag="flag" :cosList="cosList"></cos-col-select-mul>
+  1.引入：import coscolselectmul from '@/components/model-component/cos-col-select-mul'
+  2.注册：'cos-col-select-mul': coscolselectmul
+  3.使用：<cos-col-select-mul-mul coslabel="" cosprop="" cospropBoolean="" cospropMsg="" v-bind:modelfeild.sync="" loading="" loadingText="" flag="" cosList=""></cos-col-select-mul-mul>
 -->
 <!-- 说明：
   coltype：宽度样式(默认0.25)
@@ -15,10 +15,14 @@
   allow-create：是否允许用户创建新条目，需配合 filterable 使用
   default-first-option：在输入框按下回车，选择第一个匹配项。需配合 filterable 或 remote 使用
   reserve-keyword：多选且可搜索时，是否在选中一个选项后保留当前的搜索关键词
-  loading：是否正在从远程获取数据
+  loading：是否正在从远程获取数据（默认：true）
   loading-text：远程加载时显示的文字
 -->
-<!-- 注意：暂无-->
+<!-- 注意：
+  loading：Boolean类型
+  cosList: 只能是数组包含对象{ label:'', value:'' }格式
+ -->
+
 <template>
   <el-col :xs="getColSize('xs',coltype)" :sm="getColSize('sm',coltype)" :md="getColSize('md',coltype)" :lg="getColSize('lg',coltype)">
     <el-form-item :label="coslabel" :prop="cosprop" :rules="(cospropBoolean === 'true')? [{ required: true, message: cospropMsg }] : []">
@@ -33,9 +37,9 @@
         remote
         default-first-option
         reserve-keyword
-        @change="setInput"
-        :loading="loading"
-        loading-text='正在加载中，请稍后.......'
+        @change="setSelectMul"
+        :loading="loadingme"
+        :loading-text='loadingText'
         :disabled="(flag === 'view'|| flag === 'handle' )? true : false">
         <el-option
           v-for="item in cosList"
@@ -76,6 +80,13 @@
       flag: {
         type: String
       },
+      loading: {
+        type: Boolean
+      },
+      loadingText: {
+        type: String,
+        default: '正在加载中，请稍后.......'
+      },
       cosList: {
         type: Array,
         default: []
@@ -85,26 +96,28 @@
       if (this.modelfeild) {
         this.modelfeildme = this.modelfeild
       }
+      if (this.loading) {
+        this.loadingme = this.loading
+      }
     },
     data() {
       return {
         // 是否正在从远程获取数据
-        loading: false,
+        loadingme: false,
         modelfeildme: []
       }
     },
     watch: {
       'modelfeild' (newVal, oldVal) {
-        console.log(newVal, oldVal)
+        this.modelfeildme = this.modelfeild
       }
     },
     methods: {
       getColSize(type, val) {
         return colSize.getColSize(type, val)
       },
-      setInput() {
+      setSelectMul() {
         this.$emit('update:modelfeild', this.modelfeildme)
-        this.$emit('changeSelectMul', this.modelfeildme)
       }
     }
   }

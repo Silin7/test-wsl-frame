@@ -7,13 +7,16 @@
   startDate：范围限制时间开始时间
   endDate:范围限制时间结束时间
 -->
-<!--注意：-->
+<!--注意：
+  modelfeild：type格式为数组
+-->
 <template>
   <el-col :xs="getColSize('xs',coltype)" :sm="getColSize('sm',coltype)" :md="getColSize('md',coltype)" :lg="getColSize('lg',coltype)">
     <el-form-item :label="coslabel" :prop="cosprop" :rules="(cospropBoolean === 'true')? [{ required: true, message: cospropMsg }] : []">
       <el-date-picker
         v-model="modelfeildme"
         type="daterange"
+        @change="setDateMul"
         range-separator="至"
         :start-placeholder="startPlaceholder"
         :end-placeholder="endPlaceholder"
@@ -50,11 +53,7 @@
         default: '请输入日期'
       },
       modelfeild: {
-        type: String
-      },
-      datetype: {
-        datetype: String,
-        default: 'date'
+        type: Array
       },
       startPlaceholder: {
         datetype: String,
@@ -74,17 +73,14 @@
       },
       flag: {
         type: String
-      },
-      cosdate: {
-        type: String
       }
     },
     created() {
-      this.setDate()
+      this.modelfeildme = this.modelfeild
     },
     data() {
       return {
-        modelfeildme: ''
+        modelfeildme: []
       }
     },
     computed: {
@@ -102,42 +98,16 @@
     },
     watch: {
       'modelfeild' (newVal, oldVal) {
-        console.log('newVal', newVal)
-        console.log('oldVal', oldVal)
         this.modelfeildme = this.modelfeild
-        console.log('modelfeildme', this.modelfeildme)
-        if (this.modelfeildme !== undefined) {
-          this.setInput()
-        }
       }
     },
     methods: {
       getColSize (type, val) {
         return colSize.getColSize(type, val)
       },
-      setDate () {
-        this.modelfeildme = this.modelfeild
-        if (this.modelfeildme === null || this.modelfeildme === '' || this.modelfeildme === undefined) {
-          if (this.cosdate === 'now') {
-            this.modelfeildme = new Date()
-            this.$emit('update:modelfeild', colSize.formartDate2(this.modelfeildme, this.datetype))
-          } else if (this.cosdate !== null && this.cosdate !== '' && this.cosdate !== undefined) {
-            this.modelfeildme = this.cosdate
-            this.$emit('update:modelfeild', colSize.formartDate2(this.modelfeildme, this.datetype))
-          } else {
-            this.$emit('update:modelfeild', colSize.formartDate2(this.modelfeildme, this.datetype))
-          }
-        } else {
-          this.$emit('update:modelfeild', colSize.formartDate2(this.modelfeildme, this.datetype))
-        }
-      },
-      setInput () {
-        this.$emit('update:modelfeild', colSize.formartDate2(this.modelfeildme, this.datetype))
+      setDateMul () {
+        this.$emit('update:modelfeild', colSize.formartDate3(this.modelfeildme))
       }
     }
   }
 </script>
-
-<style scoped>
-
-</style>

@@ -1,11 +1,25 @@
-<!--表单组件-->
-<!--案列：-->
-<!--说明：
-coltype：宽度样式(默认0.25，不可以用分数) 例:coltype="0.5"
-cospropBoolean: 是否必填（默认true） true false
-cospropMsg: 必填提示信息(默认请输入)
+<!-- 表单组件 - select单选 -->
+<!-- 案列：
+  1.引入：import coscolselect from '@/components/model-component/cos-col-select'
+  2.注册：'cos-col-select': coscolselect
+  3.使用：<cos-col-select coslabel="" cosprop="" cospropBoolean="" cospropMsg="" v-bind:modelfeild.sync="" loading="" loadingText="" flag="" cosList=""></cos-col-select>
 -->
-<!--注意：-->
+<!-- 说明：
+  coltype：宽度样式(默认0.25)
+  coslabel：label标题
+  cosprop：表单的prop属性
+  cospropBoolean：是否必填（默认：true）
+  cospropMsg：必填提示信息（默认：请输入）
+  filterable：是否可搜索（默认：true）
+  allow-create：是否允许用户创建新条目，需配合 filterable 使用（默认：true）
+  loading：是否正在从远程获取数据（默认：true）
+  loading-text：远程加载时显示的文字
+  cosList：选项列表
+-->
+<!-- 注意：
+  loading：Boolean类型
+  cosList: 只能是数组包含对象{ label:'', value:'' }格式
+ -->
 <template>
   <el-col :xs="getColSize('xs',coltype)" :sm="getColSize('sm',coltype)" :md="getColSize('md',coltype)" :lg="getColSize('lg',coltype)">
     <el-form-item :label="coslabel" :prop="cosprop" :rules="(cospropBoolean === 'true')? [{ required: true, message: cospropMsg }] : []">
@@ -16,9 +30,9 @@ cospropMsg: 必填提示信息(默认请输入)
         filterable
         clearable
         :allow-create="true"
-        @change="setInput"
-        :loading="loading"
-        loading-text='正在加载中，请稍后......'
+        @change="setSelect"
+        :loading="loadingme"
+        :loading-text='loadingText'
         :disabled="(flag === 'view'|| flag === 'handle' )? true : false">
         <el-option
           v-for="item in cosList"
@@ -57,6 +71,13 @@ cospropMsg: 必填提示信息(默认请输入)
         type: String,
         default:''
       },
+      loading: {
+        type: Boolean
+      },
+      loadingText: {
+        type: String,
+        default: '正在加载中，请稍后.......'
+      },
       flag: {
         type: String
       },
@@ -69,29 +90,28 @@ cospropMsg: 必填提示信息(默认请输入)
       if (this.modelfeild) {
         this.modelfeildme = this.modelfeild
       }
+      if (this.loading) {
+        this.loadingme = this.loading
+      }
     },
     data() {
       return {
         // 是否正在从远程获取数据
-        loading: true,
+        loadingme: true,
         modelfeildme: ''
       }
     },
     watch: {
       'modelfeild' (newVal, oldVal) {
         this.modelfeildme = this.modelfeild
-        if (this.modelfeildme !== undefined) {
-          this.setInput()
-        }
       }
     },
     methods: {
       getColSize(type, val) {
         return colSize.getColSize(type, val)
       },
-      setInput () {
+      setSelect () {
         this.$emit('update:modelfeild', this.modelfeildme)
-        this.$emit('changeSelect', this.modelfeildme)
       }
     }
   }

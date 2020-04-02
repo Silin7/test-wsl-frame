@@ -15,7 +15,7 @@
     data () {
       return {
         mainModel: {
-          floorPrice: ''
+          floorPrice: []
         },
         floorPrice: '',
         flag: ''

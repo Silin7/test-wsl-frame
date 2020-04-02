@@ -1,20 +1,25 @@
-<!-- 表单组件 -->
+<!-- 表单组件 - radio单选 -->
 <!-- 案列：
-1.引入：import coscolradio from '@/components/model-component/model-radio'
-2.注册：'cos-col-radio': coscolradio
-3.使用：<cos-col-radio v-bind:modelfeild.sync="mainModel.floorPrice" coslabel="是否为补充类合同" cosprop="floorPrice" cosradio1="是" cosradio2="否" :flag="flag"></cos-col-radio>
+  1.引入：import coscolradio from '@/components/model-component/cos-col-radio'
+  2.注册：'cos-col-radio': coscolradio
+  3.使用：<cos-col-radio coslabel="" cosprop="" cospropBoolean="" cospropMsg="" v-bind:modelfeild.sync="" flag="" cosradio1="" cosradio2="" ></cos-col-radio>
 -->
 <!-- 说明：
-coltype：宽度样式（默认：0.25）
-cospropBoolean: 是否必填（默认：true）
-cospropMsg: 必填提示信息 (默认：请输入)
+  coltype：宽度样式（默认：0.25）
+  coslabel：label标题
+  cosprop：表单的prop属性
+  cospropBoolean: 是否必填（默认：true）
+  cospropMsg: 必填提示信息 (默认：请输入)
+  flag： 是否禁用 （禁用：'view' 'handle'）
+  cosradio1：按钮文本1
+  cosradio2：按钮文本2
 -->
 <!-- 注意：暂无 -->
 
 <template>
   <el-col :xs="getColSize('xs',coltype)" :sm="getColSize('sm',coltype)" :md="getColSize('md',coltype)" :lg="getColSize('lg',coltype)">
     <el-form-item :label="coslabel" :prop="cosprop" :rules="(cospropBoolean === 'true')? [{ required: true, message: cospropMsg, trigger: 'blur' }] : []">
-      <el-radio-group v-model="modelfeildme" @change="setInput" :disabled=" (flag === 'view'|| flag === 'handle' ) ? true : false">
+      <el-radio-group v-model="modelfeildme" @change="setRadio" :disabled=" (flag === 'view'|| flag === 'handle' ) ? true : false">
         <el-radio label="0" border>{{cosradio1}}</el-radio>
         <el-radio label="1" border>{{cosradio2}}</el-radio>
       </el-radio-group>
@@ -70,18 +75,15 @@ cospropMsg: 必填提示信息 (默认：请输入)
     watch: {
       'modelfeild'(newVal, oldVal) {
         this.modelfeildme = this.modelfeild
-        if (this.modelfeildme !== undefined) {
-          this.setInput()
-        }
       }
     },
     methods: {
       getColSize (type, val) {
         return colSize.getColSize(type, val)
       },
-      setInput () {
+      setRadio () {
+        // this.modelfeildme： 0 1
         this.$emit('update:modelfeild', this.modelfeildme)
-        this.$emit('changeRadio', this.modelfeildme)
       }
     }
   }

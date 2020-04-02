@@ -1,20 +1,28 @@
-<!-- 表单组件 -->
+<!-- 表单组件 - checkbox多选 -->
 <!-- 案列：
-1.引入：import coscolradio from '@/components/model-component/model-radio'
-2.注册：'cos-col-radio': coscolradio
-3.使用：<cos-col-radio v-bind:modelfeild.sync="mainModel.floorPrice" coslabel="是否为补充类合同" cosprop="floorPrice" cosradio1="是" cosradio2="否" :flag="flag"></cos-col-radio>
+  1.引入：import coscolcheckbox from '@/components/model-component/cos-col-checkbox'
+  2.注册：'cos-col-checkbox': coscolcheckbox
+  3.使用：<cos-col-checkbox coslabel="" cosprop="" cospropBoolean="" cospropMsg="" v-bind:modelfeild.sync="" min="" max="" flag="" cosList=""></cos-col-checkbox>
 -->
 <!-- 说明：
-coltype：宽度样式(默认0.25，不可以用分数) 例:coltype="0.5"
-cospropBoolean: 是否必填（默认：true）
-cospropMsg: 必填提示信息 (默认：请输入)
+  coltype：宽度样式（默认0.25）
+  coslabel：label标题
+  cosprop：表单的prop属性
+  cospropBoolean：是否必填（默认：true）
+  cospropMsg：必填提示信息 (默认：请输入)
+  min：最小选择数量
+  max：最大选择数量
+  flag： 是否禁用 （禁用：'view' 'handle'）
+  cosList：选项列表
 -->
-<!-- 注意：暂无 -->
+<!-- 注意：
+  cosList: 只能是数组包含字符串格式
+ -->
 
 <template>
   <el-col :xs="getColSize('xs',coltype)" :sm="getColSize('sm',coltype)" :md="getColSize('md',coltype)" :lg="getColSize('lg',coltype)">
     <el-form-item :label="coslabel" :prop="cosprop" :rules="(cospropBoolean === 'true')? [{ required: true, message: cospropMsg, trigger: 'blur' }] : []">
-      <el-checkbox-group v-model="modelfeildme" @change="setInput" :min="min" :max="max" :disabled=" (flag === 'view'|| flag === 'handle' ) ? true : false">
+      <el-checkbox-group v-model="modelfeildme" @change="setCheckbox" :min="min" :max="max" :disabled=" (flag === 'view'|| flag === 'handle' ) ? true : false">
         <el-checkbox
           v-for="(item, index) in cosList"
           :label="item"
@@ -77,18 +85,14 @@ cospropMsg: 必填提示信息 (默认：请输入)
     watch: {
       'modelfeild'(newVal, oldVal) {
         this.modelfeildme = this.modelfeild
-        if (this.modelfeildme !== undefined) {
-          this.setInput()
-        }
       }
     },
     methods: {
       getColSize (type, val) {
         return colSize.getColSize(type, val)
       },
-      setInput () {
+      setCheckbox () {
         this.$emit('update:modelfeild', this.modelfeildme)
-        this.$emit('changeCheckbox', this.modelfeildme)
       }
     }
   }

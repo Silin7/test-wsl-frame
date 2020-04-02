@@ -2,7 +2,7 @@
 <!-- 案列：
   1.引入：import coscoldate from '@/components/model-component/cos-col-date'
   2.注册：'cos-col-date': coscoldate
-  3.使用：<cos-col-date coslabel="" cosprop="" cospropBoolean="" cospropMsg="" v-bind:modelfeild.sync="" placeholder="" startDate="" endDate="" flag=""></cos-col-date>
+  3.使用：<cos-col-date coslabel="" :cosprop="" cospropBoolean="" cospropMsg="" v-bind:modelfeild.sync="" placeholder="" startDate="" endDate="" :flag=""></cos-col-date>
 -->
 <!--说明：
   coltype：宽度样式（默认0.25）

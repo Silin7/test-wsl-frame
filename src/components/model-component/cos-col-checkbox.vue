@@ -2,7 +2,7 @@
 <!-- 案列：
   1.引入：import coscolcheckbox from '@/components/model-component/cos-col-checkbox'
   2.注册：'cos-col-checkbox': coscolcheckbox
-  3.使用：<cos-col-checkbox coslabel="" cosprop="" cospropBoolean="" cospropMsg="" v-bind:modelfeild.sync="" min="" max="" flag="" cosList=""></cos-col-checkbox>
+  3.使用：<cos-col-checkbox coslabel="" :cosprop="" cospropBoolean="" cospropMsg="" v-bind:modelfeild.sync="" min="" max="" :flag="" cosList=""></cos-col-checkbox>
 -->
 <!-- 说明：
   coltype：宽度样式（默认0.25）

@@ -2,7 +2,7 @@
 <!-- 案列：
   1.引入：import coscolselectmul from '@/components/model-component/cos-col-select-mul'
   2.注册：'cos-col-select-mul': coscolselectmul
-  3.使用：<cos-col-select-mul-mul coslabel="" cosprop="" cospropBoolean="" cospropMsg="" v-bind:modelfeild.sync="" flag="" cosList=""></cos-col-select-mul-mul>
+  3.使用：<cos-col-select-mul-mul coslabel="" :cosprop="" cospropBoolean="" cospropMsg="" v-bind:modelfeild.sync="" :flag="" cosList=""></cos-col-select-mul-mul>
 -->
 <!-- 说明：
   coltype：宽度样式(默认0.25)

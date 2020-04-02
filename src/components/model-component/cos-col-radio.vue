@@ -2,7 +2,7 @@
 <!-- 案列：
   1.引入：import coscolradio from '@/components/model-component/cos-col-radio'
   2.注册：'cos-col-radio': coscolradio
-  3.使用：<cos-col-radio coslabel="" cosprop="" cospropBoolean="" cospropMsg="" v-bind:modelfeild.sync="" flag="" cosradio1="" cosradio2="" ></cos-col-radio>
+  3.使用：<cos-col-radio coslabel="" :cosprop="" cospropBoolean="" cospropMsg="" v-bind:modelfeild.sync="" :flag="" cosradio1="" cosradio2="" ></cos-col-radio>
 -->
 <!-- 说明：
   coltype：宽度样式（默认：0.25）

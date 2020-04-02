@@ -13,7 +13,8 @@ const routes = [
   { path: '/select-mul',name: 'select-mul',component: () => import('../views/select-mul') },
   { path: '/date',name: 'date',component: () => import('../views/date') },
   { path: '/date-mul', name: 'date-mul', component: () => import('../views/date-mul') },
-  { path: '/input',name: 'input',component: () => import('../views/input') }
+  { path: '/input',name: 'input',component: () => import('../views/input') },
+  { path: '/input-number',name: 'input-number',component: () => import('../views/input-number') }
 ]
 
 const router = new VueRouter({

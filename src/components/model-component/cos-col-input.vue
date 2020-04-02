@@ -60,7 +60,7 @@
 <script>
   import colSize from '@/components/model-javaScript/model-js-01'
   export default {
-    name: 'costomselect',
+    name: 'costominput',
     props: {
       type: {
         type: String,

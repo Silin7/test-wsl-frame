@@ -7,6 +7,7 @@
     <router-link to="date">date</router-link> | 
     <router-link to="date-mul">date-mul</router-link> | 
     <router-link to="input">input</router-link> | 
+    <router-link to="input-number">input-number</router-link> | 
   </div>
 </template>
 

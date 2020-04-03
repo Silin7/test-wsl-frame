@@ -1,3 +1,4 @@
+// creat by silin.wang 20.03.30
 export default {
   // 控制组件 col 的大小
   getColSize (type, val) {

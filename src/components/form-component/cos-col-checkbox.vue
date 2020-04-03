@@ -1,3 +1,4 @@
+<!-- creat by silin.wang 20.03.30 -->
 <!-- 表单组件 - checkbox多选 -->
 <!-- 案列：
   1.引入：import coscolcheckbox from '@/components/form-component/cos-col-checkbox'

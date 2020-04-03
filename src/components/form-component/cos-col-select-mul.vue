@@ -1,3 +1,4 @@
+<!-- creat by silin.wang 20.03.31 -->
 <!-- 表单组件 - select多选 -->
 <!-- 案列：
   1.引入：import coscolselectmul from '@/components/form-component/cos-col-select-mul'

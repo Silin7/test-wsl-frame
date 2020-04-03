@@ -1,3 +1,4 @@
+<!-- creat by silin.wang 20.04.02 -->
 <!-- 表单组件 - input输入框 -->
 <!-- 案列：
   1.引入：import coscolinput from '@/components/form-component/cos-col-input'

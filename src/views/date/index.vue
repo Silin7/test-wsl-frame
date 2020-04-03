@@ -7,7 +7,7 @@
 </template>
 
 <script>
-  import coscoldate from '@/components/model-component/cos-col-date'
+  import coscoldate from '@/components/form-component/cos-col-date'
   export default {
     components: {
       'cos-col-date': coscoldate

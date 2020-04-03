@@ -1,6 +1,6 @@
 <!-- 表单组件 - input输入框 -->
 <!-- 案列：
-  1.引入：import coscolinput from '@/components/model-component/cos-col-input'
+  1.引入：import coscolinput from '@/components/form-component/cos-col-input'
   2.注册：'cos-col-input': coscolinput
   3.使用：<cos-col-input type="" coslabel="" :cosprop="" cospropBoolean="" cospropMsg="" v-bind:modelfeild.sync="" placeholder="" :flag="" :rows="" maxlength=""></cos-col-input>
 -->
@@ -58,7 +58,7 @@
 </template>
 
 <script>
-  import colSize from '@/components/model-javaScript/model-js-01'
+  import colSize from './col-size-js.js'
   export default {
     name: 'costominput',
     props: {

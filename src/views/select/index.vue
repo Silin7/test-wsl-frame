@@ -7,7 +7,7 @@
 </template>
 
 <script>
-  import coscolselect from '@/components/model-component/cos-col-select'
+  import coscolselect from '@/components/form-component/cos-col-select'
   export default {
     components: {
       'cos-col-select': coscolselect

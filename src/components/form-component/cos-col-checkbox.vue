@@ -1,6 +1,6 @@
 <!-- 表单组件 - checkbox多选 -->
 <!-- 案列：
-  1.引入：import coscolcheckbox from '@/components/model-component/cos-col-checkbox'
+  1.引入：import coscolcheckbox from '@/components/form-component/cos-col-checkbox'
   2.注册：'cos-col-checkbox': coscolcheckbox
   3.使用：<cos-col-checkbox coslabel="" :cosprop="" cospropBoolean="" cospropMsg="" v-bind:modelfeild.sync="" min="" max="" :flag="" cosList=""></cos-col-checkbox>
 -->
@@ -35,7 +35,7 @@
 </template>
 
 <script>
-  import colSize from '@/components/model-javaScript/model-js-01'
+  import colSize from './col-size-js.js'
   export default {
     name: 'costomcheckbox',
     props: {

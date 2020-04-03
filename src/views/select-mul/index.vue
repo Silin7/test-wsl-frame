@@ -7,7 +7,7 @@
 </template>
 
 <script>
-  import coscolselectmul from '@/components/model-component/cos-col-select-mul'
+  import coscolselectmul from '@/components/form-component/cos-col-select-mul'
   export default {
     components: {
       'cos-col-select-mul': coscolselectmul

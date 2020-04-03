@@ -1,6 +1,6 @@
 <!-- 表单组件 - radio单选 -->
 <!-- 案列：
-  1.引入：import coscolradio from '@/components/model-component/cos-col-radio'
+  1.引入：import coscolradio from '@/components/form-component/cos-col-radio'
   2.注册：'cos-col-radio': coscolradio
   3.使用：<cos-col-radio coslabel="" :cosprop="" cospropBoolean="" cospropMsg="" v-bind:modelfeild.sync="" :flag="" cosradio1="" cosradio2="" ></cos-col-radio>
 -->
@@ -28,7 +28,7 @@
 </template>
 
 <script>
-  import colSize from '@/components/model-javaScript/model-js-01'
+  import colSize from './col-size-js.js'
   export default {
     name: 'costomradio',
     props: {

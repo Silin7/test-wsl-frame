@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-form>
-      <cos-col-date v-bind:modelfeild.sync="mainModel.floorPrice" :cosprop="floorPrice" coslabel="date日期选择器" :flag="flag"></cos-col-date>
+      <cos-col-date datetype="datetime" v-bind:modelfeild.sync="mainModel.floorPrice" :cosprop="floorPrice" coslabel="date日期选择器" :flag="flag"></cos-col-date>
     </el-form>
   </div>
 </template>
@@ -22,9 +22,6 @@
       }
     },
     methods: {
-      changeDate (val) {
-        this.mainModel.floorPrice = val
-      }
     }
   }
 </script>

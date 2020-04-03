@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-form>
-      <cos-col-date-mul v-bind:modelfeild.sync="mainModel.floorPrice" :cosprop="floorPrice" coslabel="date日期选择器" :flag="flag"></cos-col-date-mul>
+      <cos-col-date-mul datetype="datetimerange" v-bind:modelfeild.sync="mainModel.floorPrice" :cosprop="floorPrice" coslabel="date日期选择器" :flag="flag"></cos-col-date-mul>
     </el-form>
   </div>
 </template>

@@ -3,7 +3,7 @@
 <!-- 案列：
   1.引入：import coscoldate from '@/components/form-component/cos-col-date'
   2.注册：'cos-col-date': coscoldate
-  3.使用：<cos-col-date coslabel="" :cosprop="" cospropBoolean="" cospropMsg="" v-bind:modelfeild.sync="" startPlaceholder="" endPlaceholder="" startDate="" endDate="" :flag=""></cos-col-date>
+  3.使用：<cos-col-date coslabel="" :cosprop="" cospropBoolean="" cospropMsg="" datetype="" v-bind:modelfeild.sync="" startPlaceholder="" endPlaceholder="" startDate="" endDate="" :flag=""></cos-col-date>
 -->
 <!--说明：
   coltype：宽度样式（默认0.25）
@@ -11,24 +11,26 @@
   cosprop：表单的prop属性
   cospropBoolean：是否必填（默认：true）
   cospropMsg：必填提示信息(默认：请输入)
+  datetype：日期格式（默认：daterange）
   startPlaceholder：开始日期格式
   endPlaceholder：结束日期格式
   placeholder：提示符
   startDate：范围限制时间开始时间
   endDate：范围限制时间结束时间
-  picker-options：当前时间日期选择器特有的选项参考下表
+  picker-options：控制日期选择范围
   flag： 是否禁用 （禁用：'view' 'handle'）
 -->
 <!--注意：
-  picker-options：object类型
+  daterange：daterange日期格式，datetimerange日期时间格式
   modelfeild：type格式为数组
+  picker-options：object类型，固定写法
 -->
 <template>
   <el-col :xs="getColSize('xs',coltype)" :sm="getColSize('sm',coltype)" :md="getColSize('md',coltype)" :lg="getColSize('lg',coltype)">
     <el-form-item :label="coslabel" :prop="cosprop" :rules="(cospropBoolean === 'true')? [{ required: true, message: cospropMsg }] : []">
       <el-date-picker
         v-model="modelfeildme"
-        type="daterange"
+        :type="datetype"
         @change="setDateMul"
         range-separator="至"
         :start-placeholder="startPlaceholder"
@@ -65,6 +67,10 @@
         type: String,
         default: '请输入日期'
       },
+      datetype: {
+        type: String,
+        default: 'daterange'
+      },
       modelfeild: {
         type: Array
       },
@@ -77,12 +83,10 @@
         default: '选择结束日期'
       },
       startDate: {
-        datetype: String,
-        default: '1970-01-01'
+        datetype: String
       },
       endDate: {
-        datetype: String,
-        default: '9999-12-31'
+        datetype: String
       },
       flag: {
         type: String
@@ -119,7 +123,8 @@
         return colSize.getColSize(type, val)
       },
       setDateMul () {
-        this.$emit('update:modelfeild', colSize.formartDate3(this.modelfeildme))
+        this.$emit('update:modelfeild', colSize.formartDateTypeArry(this.modelfeildme, this.datetype))
+        console.log(colSize.formartDateTypeArry(this.modelfeildme, this.datetype))
       }
     }
   }

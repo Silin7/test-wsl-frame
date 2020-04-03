@@ -19,7 +19,7 @@ export default {
     }
   },
   // 单个日期选择， 返回 Y-M-D-h-m-s 格式的字符串
-  formartDate (param) {
+  formartDateTime (param) {
     if (param !== undefined) {
       let date = param
       let Y = date.getFullYear() + '-'
@@ -28,12 +28,12 @@ export default {
       let h = date.getHours() < 10 ? '0' + date.getHours() + ':' : date.getHours() + ':'
       let m = date.getMinutes() < 10 ? '0' + date.getMinutes() + ':' : date.getMinutes() + ':'
       let s = date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds()
-      return Y + M + D + h + m + s
+      return Y + M + D + ' ' + h + m + s
     }
     return null
   },
   // 单个日期选择，根据 type 属性，返回相应格式的字符串
-  formartDate2(param, type) {
+  formartDateType(param, type) {
     if (param !== undefined && param !== null && (typeof param === 'object')) {
       let date = param
       let Y = date.getFullYear() + '-'
@@ -48,12 +48,12 @@ export default {
       if (type === 'date') {
         return Y + M + D
       }
-      return Y + M + D + h + m + s
+      return Y + M + D + ' ' + h + m + s
     }
     return param
   },
   // 区间日期选择，返回 Y-M-D 格式的数组 
-  formartDate3(param) {
+  formartDateTypeArry(param, type) {
     if (param !== undefined && param !== null && param !== []) {
       let date = param
       var dateArry = []
@@ -61,7 +61,15 @@ export default {
         let Y = item.getFullYear() + '-'
         let M = item.getMonth() + 1 < 10 ? '0' + (item.getMonth() + 1) + '-' : item.getMonth() + 1 + '-'
         let D = item.getDate() < 10 ? '0' + item.getDate() + '' : item.getDate() + ''
-        dateArry.push(Y + M + D)
+        let h = item.getHours() < 10 ? '0' + item.getHours() + ':' : item.getHours() + ':'
+        let m = item.getMinutes() < 10 ? '0' + item.getMinutes() + ':' : item.getMinutes() + ':'
+        let s = item.getSeconds() < 10 ? '0' + item.getSeconds() : item.getSeconds()
+        if (type === 'daterange') {
+          dateArry.push(Y + M + D)
+        }
+        if (type === 'datetimerange') {
+          dateArry.push(Y + M + D + ' ' + h + m + s)
+        }
       })
       return dateArry
     }

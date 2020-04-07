@@ -21,8 +21,8 @@
   <el-col :xs="getColSize('xs',coltype)" :sm="getColSize('sm',coltype)" :md="getColSize('md',coltype)" :lg="getColSize('lg',coltype)">
     <el-form-item :label="coslabel" :prop="cosprop" :rules="(cospropBoolean === 'true')? [{ required: true, message: cospropMsg, trigger: 'blur' }] : []">
       <el-radio-group v-model="modelfeildme" @change="setRadio" :disabled=" (flag === 'view'|| flag === 'handle' ) ? true : false">
-        <el-radio label="0" border>{{cosradio1}}</el-radio>
-        <el-radio label="1" border>{{cosradio2}}</el-radio>
+        <el-radio label="0" :border="border">{{cosradio1}}</el-radio>
+        <el-radio label="1" :border="border">{{cosradio2}}</el-radio>
       </el-radio-group>
     </el-form-item>
   </el-col>
@@ -56,6 +56,10 @@
       flag: {
         type: String
       },
+      border: {
+        type: Boolean,
+        default: true
+      },
       cosradio1: {
         type: String
       },
@@ -67,6 +71,7 @@
       if (this.modelfeild) {
         this.modelfeildme = this.modelfeild
       }
+      console.log(typeof(this.border))
     },
     data () {
       return {

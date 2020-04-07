@@ -12,6 +12,16 @@
     components: {
       'cos-col-date-mul': coscoldatemul
     },
+    mounted () {
+      this.$http({
+        method: 'get',
+        url: '/api/stpwin/list?t=1585893511126&spl=&matnr=&state=&bukrs=&page=1&limit=10',
+      }).then(res => {
+        console.log('res');
+      }).catch(function(err){
+          console.log(err)
+      })
+    },
     data () {
       return {
         mainModel: {

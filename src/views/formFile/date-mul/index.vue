@@ -13,8 +13,7 @@
       'cos-col-date-mul': coscoldatemul
     },
     mounted () {
-      console.log('this.$http.get', this.$http.get)
-      this.$http.get('../../../../public/js/data.json').then(res => {
+      this.$http.get('/js/data.json').then(res => {
         console.log('res', res);
       }).catch(error => {
         console.log('error', error)

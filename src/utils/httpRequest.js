@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import axios from 'axios'
 import router from '@/router'
-import qs from 'qs'
+import qs from 'qs'//注：使用axios必须得安装qs，所有的Post请求，我们都需要qs对参数进行序列化。
 import merge from 'lodash/merge'
 import { clearLoginInfo } from '@/utils'
 
@@ -17,7 +17,8 @@ const http = axios.create({
  * 请求拦截
  */
 http.interceptors.request.use(config => {
-  config.headers['token'] = Vue.cookie.get('token') == null ? '' : Vue.cookie.get('token') // 请求头带上token
+  // 请求头带上token
+  config.headers['token'] = Vue.cookie.get('token') == null ? '' : Vue.cookie.get('token')
   return config
 }, error => {
   return Promise.reject(error)
@@ -27,7 +28,8 @@ http.interceptors.request.use(config => {
  * 响应拦截
  */
 http.interceptors.response.use(response => {
-  if (response.data && response.data.code === 401) { // 401, token失效
+  // 401, token失效
+  if (response.data && response.data.code === 401) {
     clearLoginInfo()
     if (window.SITE_CONFIG['showTest']) {
       localStorage.setItem('indexUrl', window.location.href)

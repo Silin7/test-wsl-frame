@@ -13,13 +13,11 @@
       'cos-col-date-mul': coscoldatemul
     },
     mounted () {
-      this.$http({
-        method: 'get',
-        url: '/api/stpwin/list?t=1585893511126&spl=&matnr=&state=&bukrs=&page=1&limit=10',
-      }).then(res => {
-        console.log('res');
-      }).catch(function(err){
-          console.log(err)
+      console.log('this.$http.get', this.$http.get)
+      this.$http.get('../../../../public/js/data.json').then(res => {
+        console.log('res', res);
+      }).catch(error => {
+        console.log('error', error)
       })
     },
     data () {

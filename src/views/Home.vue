@@ -9,7 +9,12 @@
     <router-link to="input">input</router-link> | 
     <router-link to="input-number">input-number</router-link> | 
     <br>
-    <router-link to="vantRadio">radio</router-link> | 
+    <br>
+    <br>
+    <br>
+    <br>
+    <router-link to="vantRadio">vantRadio</router-link> | 
+    <router-link to="vantCheckbox">vantCheckbox</router-link> | 
   </div>
 </template>
 

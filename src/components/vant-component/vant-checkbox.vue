@@ -1,9 +1,9 @@
 <!-- creat by silin.wang 20.04.20 -->
-<!-- 表单组件 - radio单选 -->
+<!-- 表单组件 - checkbox多选 -->
 <!-- 案列：
-  1.引入：import vantradio from '@/components/vant-component/vant-radio'
-  2.注册：'vant-radio': vantradio
-  3.使用：<vant-radio coslabel="" cospropBoolean="" cospropMsg="" v-bind:modelfeild.sync="" direction="" flag="" shape="" iconSize="" checkedColor="" vanradio1="" vanradio2="" ></vant-radio>
+  1.引入：import vantcheckbox from '@/components/vant-component/vant-checkbox'
+  2.注册：'vant-checkbox': vantcheckbox
+  3.使用：<vant-checkbox coslabel="" cospropBoolean="" cospropMsg="" v-bind:modelfeild.sync="" direction="" flag="" max="" shape="" iconSize="" checkedColor="" dataList=""></vant-checkbox>
 -->
 <!-- 说明：
   coslabel：label标题
@@ -11,29 +11,29 @@
   cospropMsg：必填提示信息 (默认：请输入)
   direction：单选框的排列方式（默认：'horizontal'）
   flag： 是否禁用 （禁用：'view' 'handle'）
+  max：限制最大选择数量
   shape：单选框的形状（方框：'square'）
   iconSize：单选框大小（默认：16px）
   checkedColor：单选框颜色
-  vanradio1：按钮文本1
-  vanradio2：按钮文本2
+  dataList：多选框数据列表
 -->
 <!-- 注意：暂无 -->
 
-
 <template>
-  <van-field name="radio" :label="coslabel" :rules="(cospropBoolean === 'true')? [{ required: true, message: cospropMsg }] : []">
+  <van-field name="checkbox" :label="coslabel" :rules="(cospropBoolean === 'true')? [{ required: true, message: cospropMsg }] : []">
     <template #input>
-      <van-radio-group v-model="modelfeildme" @change="setRadio" :direction="direction" :disabled="(flag === 'view'|| flag === 'handle' ) ? true : false">
-        <van-radio name="0" :shape="shape" :icon-size="iconSize" :checked-color="checkedColor">{{vanradio1}}</van-radio>
-        <van-radio name="1" :shape="shape" :icon-size="iconSize" :checked-color="checkedColor">{{vanradio2}}</van-radio>
-      </van-radio-group>
+      <van-checkbox-group v-model="modelfeildme" :direction="direction" @change="setCheckbox" :disabled="(flag === 'view'|| flag === 'handle' ) ? true : false" :max="max">
+        <van-checkbox v-for="(item, index) in dataList" :name="item.value" :key="index" :shape="shape" :icon-size="iconSize" :checked-color="checkedColor">
+          {{item.lable}}
+        </van-checkbox>
+      </van-checkbox-group>
     </template>
   </van-field>
 </template>
 
 <script>
   export default {
-    name: 'vantradio',
+    name: 'vantcheckbox',
     props: {
       coslabel: {
         type: String
@@ -47,14 +47,17 @@
         default: '请选择'
       },
       modelfeild: {
-        type: String
-      },
-      flag: {
-        type: String
+        type: Array
       },
       direction: {
         type: String,
         default: 'horizontal'
+      },
+      flag: {
+        type: String
+      },
+      max: {
+        type: Number | String
       },
       shape: {
         type: String
@@ -66,11 +69,8 @@
       checkedColor: {
         type: String
       },
-      vanradio1: {
-        type: String
-      },
-      vanradio2: {
-        type: String
+      dataList: {
+        type: Array
       }
     },
     created () {
@@ -80,7 +80,7 @@
     },
     data () {
       return {
-        modelfeildme: ''
+        modelfeildme: []
       }
     },
     watch: {
@@ -89,11 +89,9 @@
       }
     },
     methods: {
-      setRadio () {
+      setCheckbox () {
         this.$emit('update:modelfeild', this.modelfeildme)
       }
     }
   }
 </script>
-
-

@@ -1,21 +1,21 @@
 <template>
   <div>
     <el-form>
-      <cos-col-select-mul v-bind:modelfeild.sync="mainModel.floorPrice" coslabel="select多选选择器" :flag="flag" :cosList="cosList"></cos-col-select-mul>
+      <cos-col-select v-bind:modelfeild.sync="mainModel.floorPrice" coslabel="select单选选择器" :flag="flag" :cosList="cosList"></cos-col-select>
     </el-form>
   </div>
 </template>
 
 <script>
-  import coscolselectmul from '@/components/form-component/cos-col-select-mul'
+  import coscolselect from '@/components/element-component/cos-col-select'
   export default {
     components: {
-      'cos-col-select-mul': coscolselectmul
+      'cos-col-select': coscolselect
     },
     data () {
       return {
         mainModel: {
-          floorPrice: ['1', '2']
+          floorPrice: ''
         },
         floorPrice: '',
         flag: '',
@@ -29,7 +29,7 @@
       }
     },
     methods: {
-      changeSelectMul (val) {
+      changeSelect (val) {
         this.mainModel.floorPrice = val
       }
     }

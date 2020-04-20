@@ -7,7 +7,7 @@
 </template>
 
 <script>
-  import coscolcheckbox from '@/components/form-component/cos-col-checkbox'
+  import coscolcheckbox from '@/components/element-component/cos-col-checkbox'
   export default {
     components: {
       'cos-col-checkbox': coscolcheckbox

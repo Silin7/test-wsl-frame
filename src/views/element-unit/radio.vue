@@ -7,7 +7,7 @@
 </template>
 
 <script>
-  import coscolradio from '@/components/form-component/cos-col-radio'
+  import coscolradio from '@/components/element-component/cos-col-radio'
   export default {
     components: {
       'cos-col-radio': coscolradio

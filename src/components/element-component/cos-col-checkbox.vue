@@ -1,7 +1,7 @@
 <!-- creat by silin.wang 20.03.30 -->
 <!-- 表单组件 - checkbox多选 -->
 <!-- 案列：
-  1.引入：import coscolcheckbox from '@/components/form-component/cos-col-checkbox'
+  1.引入：import coscolcheckbox from '@/components/element-component/cos-col-checkbox'
   2.注册：'cos-col-checkbox': coscolcheckbox
   3.使用：<cos-col-checkbox coslabel="" :cosprop="" cospropBoolean="" cospropMsg="" v-bind:modelfeild.sync="" min="" max="" :flag="" cosList=""></cos-col-checkbox>
 -->

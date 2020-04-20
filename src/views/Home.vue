@@ -8,6 +8,8 @@
     <router-link to="date-mul">date-mul</router-link> | 
     <router-link to="input">input</router-link> | 
     <router-link to="input-number">input-number</router-link> | 
+    <br>
+    <router-link to="vantRadio">radio</router-link> | 
   </div>
 </template>
 

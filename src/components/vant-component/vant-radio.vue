@@ -3,12 +3,12 @@
 <!-- 案列：
   1.引入：import vantradio from '@/components/vant-component/vant-radio'
   2.注册：'vant-radio': vantradio
-  3.使用：<vant-radio coslabel="" cospropBoolean="" cospropMsg="" v-bind:modelfeild.sync="" direction="" flag="" shape="" iconSize="" checkedColor="" vanradio1="" vanradio2="" ></vant-radio>
+  3.使用：<vant-radio label="" propBoolean="" propMsg="" v-bind:modelfeild.sync="" direction="" flag="" shape="" iconSize="" checkedColor="" vanradio1="" vanradio2="" ></vant-radio>
 -->
 <!-- 说明：
-  coslabel：label标题
-  cospropBoolean：是否必填（默认：true）
-  cospropMsg：必填提示信息 (默认：请输入)
+  label：label标题
+  propBoolean：是否必填（默认：true）
+  propMsg：必填提示信息 (默认：请输入)
   direction：单选框的排列方式（默认：'horizontal'）
   flag： 是否禁用 （禁用：'view' 'handle'）
   shape：单选框的形状（方框：'square'）
@@ -21,7 +21,7 @@
 
 
 <template>
-  <van-field name="radio" :label="coslabel" :rules="(cospropBoolean === 'true')? [{ required: true, message: cospropMsg }] : []">
+  <van-field name="radio" :label="label" :rules="(propBoolean === 'true')? [{ required: true, message: propMsg }] : []">
     <template #input>
       <van-radio-group v-model="modelfeildme" @change="setRadio" :direction="direction" :disabled="(flag === 'view'|| flag === 'handle' ) ? true : false">
         <van-radio name="0" :shape="shape" :icon-size="iconSize" :checked-color="checkedColor">{{vanradio1}}</van-radio>
@@ -35,14 +35,14 @@
   export default {
     name: 'vantradio',
     props: {
-      coslabel: {
+      label: {
         type: String
       },
-      cospropBoolean: {
+      propBoolean: {
         type: String,
         default: 'true'
       },
-      cospropMsg: {
+      propMsg: {
         type: String,
         default: '请选择'
       },

@@ -18,7 +18,8 @@ const routes = [
   { path: '/input-number', name: 'input-number', component: () => import('../views/element-unit/inputNum.vue') },
   // vant 组件
   { path: '/vantRadio', name: 'vantRadio', component: () => import('../views/vant-unit/vantRadio.vue') },
-  { path: '/vantCheckbox', name: 'vantCheckbox', component: () => import('../views/vant-unit/vantCheckbox.vue') }
+  { path: '/vantCheckbox', name: 'vantCheckbox', component: () => import('../views/vant-unit/vantCheckbox.vue') },
+  { path: '/vantField', name: 'vantField', component: () => import('../views/vant-unit/vantField.vue') }
 ]
 
 const router = new VueRouter({

@@ -3,12 +3,12 @@
 <!-- 案列：
   1.引入：import vantcheckbox from '@/components/vant-component/vant-checkbox'
   2.注册：'vant-checkbox': vantcheckbox
-  3.使用：<vant-checkbox coslabel="" cospropBoolean="" cospropMsg="" v-bind:modelfeild.sync="" direction="" flag="" max="" shape="" iconSize="" checkedColor="" dataList=""></vant-checkbox>
+  3.使用：<vant-checkbox label="" propBoolean="" propMsg="" v-bind:modelfeild.sync="" direction="" flag="" max="" shape="" iconSize="" checkedColor="" dataList=""></vant-checkbox>
 -->
 <!-- 说明：
-  coslabel：label标题
-  cospropBoolean：是否必填（默认：true）
-  cospropMsg：必填提示信息 (默认：请输入)
+  label：label标题
+  propBoolean：是否必填（默认：true）
+  propMsg：必填提示信息 (默认：请输入)
   direction：单选框的排列方式（默认：'horizontal'）
   flag： 是否禁用 （禁用：'view' 'handle'）
   max：限制最大选择数量
@@ -20,7 +20,7 @@
 <!-- 注意：暂无 -->
 
 <template>
-  <van-field name="checkbox" :label="coslabel" :rules="(cospropBoolean === 'true')? [{ required: true, message: cospropMsg }] : []">
+  <van-field name="checkbox" :label="label" :rules="(propBoolean === 'true')? [{ required: true, message: propMsg }] : []">
     <template #input>
       <van-checkbox-group v-model="modelfeildme" :direction="direction" @change="setCheckbox" :disabled="(flag === 'view'|| flag === 'handle' ) ? true : false" :max="max">
         <van-checkbox v-for="(item, index) in dataList" :name="item.value" :key="index" :shape="shape" :icon-size="iconSize" :checked-color="checkedColor">
@@ -35,14 +35,14 @@
   export default {
     name: 'vantcheckbox',
     props: {
-      coslabel: {
+      label: {
         type: String
       },
-      cospropBoolean: {
+      propBoolean: {
         type: String,
         default: 'true'
       },
-      cospropMsg: {
+      propMsg: {
         type: String,
         default: '请选择'
       },

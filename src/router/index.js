@@ -21,7 +21,8 @@ const routes = [
   { path: '/vantCheckbox', name: 'vantCheckbox', component: () => import('../views/vant-unit/vantCheckbox.vue') },
   { path: '/vantField', name: 'vantField', component: () => import('../views/vant-unit/vantField.vue') },
   { path: '/vantUploader', name: 'vantUploader', component: () => import('../views/vant-unit/vantUploader.vue') },
-  { path: '/vantArea', name: 'vantArea', component: () => import('../views/vant-unit/vantArea.vue') }
+  { path: '/vantArea', name: 'vantArea', component: () => import('../views/vant-unit/vantArea.vue') },
+  { path: '/vantPopup', name: 'vantPopup', component: () => import('../views/vant-unit/vantPopup.vue') }
 ]
 
 const router = new VueRouter({

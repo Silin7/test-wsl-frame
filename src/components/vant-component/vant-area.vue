@@ -1,36 +1,38 @@
 <!-- creat by silin.wang 20.04.20 -->
 <!-- 表单组件 - area地区选择器 -->
-<!-- 案列：
-  1.引入：import vantarea from '@/components/vant-component/vant-area'
-  2.注册：'vant-area': vantarea
-  3.使用：<vant-area label="" propBoolean="" propMsg="" v-bind:modelfeild.sync="" placeholder="" flag="" title="" columnsNum=""></vant-area>
+<!-- 案列: 
+  1.引入: import vantarea from '@/components/vant-component/vant-area'
+  2.注册: 'vant-area': vantarea
+  3.使用: <vant-area label="" placeholder="" inputAlign="" propBoolean="" propMsg="" v-bind:modelfeild.sync=""  flag="" position="" overlay="" round="" title="" columnsNum=""></vant-area>
 -->
-<!-- 说明：
-  typeme：判断area框样式【text、tel、digit、number、password】（默认：text）
-  label：label标题
-  placeholder：提示（默认：选择省市区）
-  propBoolean：是否必填（默认：true）
-  propMsg：必填提示信息（默认：请输入）
-  flag：是否禁用 （禁用：'view' 'handle'）
-  title：弹出框标题（默认：选择省市区）
-  columnsNum：显示列数，3-省市区，2-省市，1-省
+<!-- 说明: 
+  label: label标题
+  placeholder: 提示（默认: 选择省市区）
+  inputAlign: 字体对齐方式 (默认: center)
+  propBoolean: 是否必填（默认: true）
+  propMsg: 必填提示信息（默认: 请输入）
+  flag: 是否禁用 （禁用: 'view' 'handle'）
+  position: 弹出位置，可选值为 top bottom right left （默认: bottom）
+  overlay: 是否显示遮罩层（默认: true）
+  round: 是否显示圆角（默认: true）
+  title: 弹出框标题（默认: 选择省市区）
+  columnsNum: 显示列数，3-省市区，2-省市，1-省
 -->
+<!-- 注意: 暂无 -->
 
-<!-- 注意：
- -->
 <template>
   <div>
     <van-field
-      name="area"
       readonly
       clickable
       :label="label"
-      :value="modelfeildme"
       :placeholder="placeholder"
+      :input-align="inputAlign"
+      :value="modelfeildme"
       @click="clickShow"
       :rules="(propBoolean === 'true')? [{ required: true, message: propMsg }] : []"
       :disabled="(flag === 'view'|| flag === 'handle' )? true : false"/>
-    <van-popup v-model="showArea" position="bottom" round>
+    <van-popup v-model="showArea" :position="position" :overlay="overlay" :round="round" >
       <van-area
       :title="title"
       :area-list="areaList"
@@ -53,6 +55,10 @@
         type: String,
         default: '选择省市区'
       },
+      inputAlign: {
+        type: String,
+        default: 'center'
+      },
       propBoolean: {
         type: String,
         default: 'true'
@@ -67,6 +73,18 @@
       },
       flag: {
         type: String
+      },
+      position: {
+        type: String,
+        default: 'bottom'
+      },
+      overlay: {
+        type: Boolean,
+        default: true
+      },
+      round: {
+        type: Boolean,
+        default: true
       },
       title: {
         type: String,

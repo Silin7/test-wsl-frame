@@ -1,20 +1,19 @@
 <!-- creat by silin.wang 20.04.20 -->
 <!-- 表单组件 - uploader单选 -->
-<!-- 案列：
-  1.引入：import vantuploader from '@/components/vant-component/vant-uploader'
-  2.注册：'vant-uploader': vantuploader
-  3.使用：<vant-uploader label="" propBoolean="" propMsg="" v-bind:modelfeild.sync="" multiple="" maxCount="" flag=""></vant-uploader>
+<!-- 案列: 
+  1.引入: import vantuploader from '@/components/vant-component/vant-uploader'
+  2.注册: 'vant-uploader': vantuploader
+  3.使用: <vant-uploader label="" propBoolean="" propMsg="" v-bind:modelfeild.sync="" multiple="" maxCount="" flag=""></vant-uploader>
 -->
-<!-- 说明：
-  label：label标题
-  propBoolean：是否必填（默认：true）
-  propMsg：必填提示信息 (默认：请输入)
-  flag： 是否禁用 （禁用：'view' 'handle'）
-  multiple：是否开启图片多选，部分安卓机型不支持
-  maxCount：文件上传数量限制
+<!-- 说明: 
+  label: label标题
+  propBoolean: 是否必填（默认: true）
+  propMsg: 必填提示信息 (默认: 请输入)
+  flag:  是否禁用 （禁用: 'view' 'handle'）
+  multiple: 是否开启图片多选，部分安卓机型不支持
+  maxCount: 文件上传数量限制
 -->
-<!-- 注意：暂无 -->
-
+<!-- 注意: 暂无 -->
 
 <template>
   <van-field name="uploader" :label="label" :rules="(propBoolean === 'true')? [{ required: true, message: propMsg }] : []">

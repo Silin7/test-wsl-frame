@@ -1,23 +1,23 @@
 <!-- creat by silin.wang 20.04.20 -->
 <!-- 表单组件 - checkbox多选 -->
-<!-- 案列：
-  1.引入：import vantcheckbox from '@/components/vant-component/vant-checkbox'
-  2.注册：'vant-checkbox': vantcheckbox
-  3.使用：<vant-checkbox label="" propBoolean="" propMsg="" v-bind:modelfeild.sync="" direction="" flag="" max="" shape="" iconSize="" checkedColor="" dataList=""></vant-checkbox>
+<!-- 案列: 
+  1.引入: import vantcheckbox from '@/components/vant-component/vant-checkbox'
+  2.注册: 'vant-checkbox': vantcheckbox
+  3.使用: <vant-checkbox label="" propBoolean="" propMsg="" v-bind:modelfeild.sync="" direction="" flag="" max="" shape="" iconSize="" checkedColor="" dataList=""></vant-checkbox>
 -->
-<!-- 说明：
-  label：label标题
-  propBoolean：是否必填（默认：true）
-  propMsg：必填提示信息 (默认：请输入)
-  direction：单选框的排列方式（默认：'horizontal'）
-  flag： 是否禁用 （禁用：'view' 'handle'）
-  max：限制最大选择数量
-  shape：单选框的形状（方框：'square'）
-  iconSize：单选框大小（默认：16px）
-  checkedColor：单选框颜色
-  dataList：多选框数据列表
+<!-- 说明: 
+  label: label标题
+  propBoolean: 是否必填（默认: true）
+  propMsg: 必填提示信息 (默认: 请输入)
+  direction: 单选框的排列方式（默认: 'horizontal'）
+  flag:  是否禁用 （禁用: 'view' 'handle'）
+  max: 限制最大选择数量
+  shape: 单选框的形状（方框: 'square'）
+  iconSize: 单选框大小（默认: 16px）
+  checkedColor: 单选框颜色
+  dataList: 多选框数据列表
 -->
-<!-- 注意：暂无 -->
+<!-- 注意: 暂无 -->
 
 <template>
   <van-field name="checkbox" :label="label" :rules="(propBoolean === 'true')? [{ required: true, message: propMsg }] : []">

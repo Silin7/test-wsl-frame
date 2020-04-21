@@ -20,6 +20,7 @@
     <router-link to="vantArea">vantArea</router-link> | 
     <router-link to="vantPopup">vantPopup</router-link> | 
     <router-link to="vantDate">vantDate</router-link> | 
+    <router-link to="vantTime">vantTime</router-link> | 
   </div>
 </template>
 

@@ -3,7 +3,7 @@
 <!-- 案列: 
   1.引入: import vantarea from '@/components/vant-component/vant-area'
   2.注册: 'vant-area': vantarea
-  3.使用: <vant-area  typeme= "" label="" placeholder="" inputAlign="" propBoolean="" propMsg="" v-bind:modelfeild.sync="" flag="" position="" overlay="" round="" title="" color="" proportion=""></vant-area>
+  3.使用: <vant-area  typeme= "" label="" placeholder="" inputAlign="" propBoolean="" propMsg="" v-bind:modelfeild.sync="" flag="" position="" overlay="" round="" title="" proportion=""></vant-area>
 -->
 <!-- 说明: 
   typeme: single（单个）、multiple（多选）、range（区间日期）
@@ -16,8 +16,7 @@
   position: 弹出位置，可选值为 top bottom right left （默认: bottom）
   overlay: 是否显示遮罩层（默认: true）
   round: 是否显示圆角（默认: true）
-  title: 弹出框标题（默认: 选择省市区）
-  color: 颜色（默认: #0070F4）
+  title: 弹出框标题（默认: 请选择）
   proportion:  弹框高度（默认: 60%）
 -->
 <!-- 注意: 
@@ -38,7 +37,9 @@
       @click-right-icon.stop="modelfeildme = ''"
       :rules="(propBoolean === 'true')? [{ required: true, message: propMsg }] : []"
       :disabled="(flag === 'view'|| flag === 'handle' )? true : false"/>
-    <van-calendar v-model="showArea" :type="typeme" :position="position" :overlay="overlay" :round="round" :title="title" :color="color" :style="`height: ${proportion};`" @confirm="setAreaConfirm" />
+      <van-popup v-model="showArea" :position="position" :overlay="overlay" :round="round" :style="`height: ${proportion};`" >
+        <van-datetime-picker :type="typeme" :title="title" v-model="currentDate" :min-date="minDate" :max-date="maxDate" @cancel="cancelConfirm" @confirm="setAreaConfirm"/>
+      </van-popup>
   </div>
 </template>
 
@@ -48,7 +49,7 @@
     props: {
       typeme: {
         type: String,
-        default: 'single'
+        default: 'datetime'
       },
       label: {
         type: String
@@ -93,17 +94,11 @@
         default: '请选择'
       },
       proportion: {
-        type: String,
-        default: '60%'
-      },
-      color: {
-        type: String,
-        default: '#0070F4'
+        type: String
       }
     },
     mounted () {
       if (this.modelfeild) {
-        console.log('this.modelfeild', this.modelfeild)
         this.modelfeildme = this.modelfeild
       }
       if (this.typeme) {
@@ -115,7 +110,10 @@
         typeFlag: '',
         showArea: false,
         modelfeildme: '',
-        iconClose: ''
+        iconClose: '',
+        currentDate: new Date(),
+        minDate: new Date(1970, 0, 1),
+        maxDate: new Date(9999, 12, 31)
       }
     },
     watch: {
@@ -138,27 +136,26 @@
           this.showArea = true
         }
       },
+      // 取消按钮
+      cancelConfirm () {
+        this.showArea = false
+      },
       // 确定按钮
       setAreaConfirm(date) {
-        if (this.typeFlag === 'single') {
-          this.modelfeildme = this.formatDate(date)
-        }
-        if (this.typeFlag === 'multiple') {
-          let dateArry = []
-          date.forEach(item => {
-            dateArry.push(this.formatDate(item))
-          })
-          this.modelfeildme = dateArry.join(' - ')
-        }
-        if (this.typeFlag === 'range') {
-          const [start, end] = date;
-          this.modelfeildme = `${this.formatDate(start)} - ${this.formatDate(end)}`;
-        }
+        this.modelfeildme = this.formatDate(date)
         this.showArea = false;
         this.$emit('update:modelfeild', this.modelfeildme)
       },
       formatDate(date) {
-        return `${date.getFullYear()}-${date.getMonth()+1 > 9 ? date.getMonth()+1 : '0'+(date.getMonth()+1)}-${date.getDate() > 9 ? date.getDate() : '0'+date.getDate()}`;
+        if (this.typeFlag === 'datetime') {
+          return `${date.getFullYear()}-${date.getMonth()+1 > 9 ? date.getMonth()+1 : '0'+(date.getMonth()+1)}-${date.getDate() > 9 ? date.getDate() : '0'+date.getDate()} ${date.getHours() > 9 ? date.getHours(): '0'+date.getHours()}:${date.getMinutes() > 9 ? date.getMinutes(): '0'+date.getMinutes()}:00`;
+        }
+        if (this.typeFlag === 'date') {
+          return `${date.getFullYear()}-${date.getMonth()+1 > 9 ? date.getMonth()+1 : '0'+(date.getMonth()+1)}-${date.getDate() > 9 ? date.getDate() : '0'+date.getDate()}`;
+        }
+        if (this.typeFlag === 'year-month') {
+          return `${date.getFullYear()}-${date.getMonth()+1 > 9 ? date.getMonth()+1 : '0'+(date.getMonth()+1)}`;
+        }
       }
     }
   }

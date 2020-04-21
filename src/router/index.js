@@ -23,7 +23,8 @@ const routes = [
   { path: '/vantUploader', name: 'vantUploader', component: () => import('../views/vant-unit/vantUploader.vue') },
   { path: '/vantArea', name: 'vantArea', component: () => import('../views/vant-unit/vantArea.vue') },
   { path: '/vantPopup', name: 'vantPopup', component: () => import('../views/vant-unit/vantPopup.vue') },
-  { path: '/vantDate', name: 'vantDate', component: () => import('../views/vant-unit/vantDate.vue') }
+  { path: '/vantDate', name: 'vantDate', component: () => import('../views/vant-unit/vantDate.vue') },
+  { path: '/vantTime', name: 'vantTime', component: () => import('../views/vant-unit/vantTime.vue') }
 ]
 
 const router = new VueRouter({

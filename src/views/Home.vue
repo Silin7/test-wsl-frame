@@ -15,6 +15,9 @@
     <br>
     <router-link to="vantRadio">vantRadio</router-link> | 
     <router-link to="vantCheckbox">vantCheckbox</router-link> | 
+    <router-link to="vantField">vantField</router-link> | 
+    <router-link to="vantUploader">vantUploader</router-link> | 
+    <router-link to="vantArea">vantArea</router-link> | 
   </div>
 </template>
 

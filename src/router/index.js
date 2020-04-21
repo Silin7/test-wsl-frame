@@ -19,7 +19,9 @@ const routes = [
   // vant 组件
   { path: '/vantRadio', name: 'vantRadio', component: () => import('../views/vant-unit/vantRadio.vue') },
   { path: '/vantCheckbox', name: 'vantCheckbox', component: () => import('../views/vant-unit/vantCheckbox.vue') },
-  { path: '/vantField', name: 'vantField', component: () => import('../views/vant-unit/vantField.vue') }
+  { path: '/vantField', name: 'vantField', component: () => import('../views/vant-unit/vantField.vue') },
+  { path: '/vantUploader', name: 'vantUploader', component: () => import('../views/vant-unit/vantUploader.vue') },
+  { path: '/vantArea', name: 'vantArea', component: () => import('../views/vant-unit/vantArea.vue') }
 ]
 
 const router = new VueRouter({

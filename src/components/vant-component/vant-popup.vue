@@ -3,7 +3,7 @@
 <!-- 案列: 
   1.引入: import vantarea from '@/components/vant-component/vant-area'
   2.注册: 'vant-area': vantarea
-  3.使用: <vant-area label="" placeholder="" inputAlign="" propBoolean="" propMsg="" v-bind:modelfeild.sync=""  flag="" position="" overlay="" round="" title="" dataList=""></vant-area>
+  3.使用: <vant-area label="" placeholder="" inputAlign="" propBoolean="" propMsg="" v-bind:modelfeild.sync=""  flag="" position="" overlay="" round="" proportion="" title="" dataList=""></vant-area>
 -->
 <!-- 说明: 
   label: label标题
@@ -15,10 +15,12 @@
   position: 弹出位置，可选值为 top bottom right left （默认: bottom）
   overlay: 是否显示遮罩层（默认: true）
   round: 是否显示圆角（默认: true）
+  proportion:  弹框高度（默认: 自适应）
   title: 弹出框标题（默认: 选择省市区）
   dataList: picker数据列表 (默认: 空数组)
 -->
 <!-- 注意: 
+  proportion: 百分比
   dataList: 为数组包含字符串格式
  -->
 
@@ -31,11 +33,11 @@
       :placeholder="placeholder"
       :input-align="inputAlign"
       @click="clickShow"
-      :right-icon="statusClose"
+      :right-icon="iconClose"
       @click-right-icon.stop="modelfeildme = ''"
       :rules="(propBoolean === 'true')? [{ required: true, message: propMsg }] : []"
       :disabled="(flag === 'view'|| flag === 'handle' )? true : false"/>
-      <van-popup v-model="showArea" :position="position" :overlay="overlay" :round="round">
+      <van-popup v-model="showArea" :position="position" :overlay="overlay" :round="round" :style="`height: ${proportion};`" >
         <van-picker show-toolbar :title="title" :columns="dataList" @cancel="cancelConfirm" @confirm="setAreaConfirm"/>
       </van-popup>
   </div>
@@ -83,6 +85,9 @@
         type: Boolean,
         default: true
       },
+      proportion: {
+        type: String
+      },
       title: {
         type: String,
         default: '请选择'
@@ -100,7 +105,7 @@
     data() {
       return {
         showArea: false,
-        statusClose: '',
+        iconClose: '',
         modelfeildme: ''
       }
     },
@@ -110,9 +115,10 @@
       },
       'modelfeildme'(newVal, oldVal) {
         if (newVal !== '') {
-          this.statusClose = 'close'
+          this.iconClose = 'close'
         } else {
-          this.statusClose = ''
+          this.iconClose = ''
+          this.$emit('update:modelfeild', this.modelfeildme)
         }
       }
     },

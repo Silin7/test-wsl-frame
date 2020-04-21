@@ -18,6 +18,8 @@
     <router-link to="vantField">vantField</router-link> | 
     <router-link to="vantUploader">vantUploader</router-link> | 
     <router-link to="vantArea">vantArea</router-link> | 
+    <router-link to="vantPopup">vantPopup</router-link> | 
+    <router-link to="vantDate">vantDate</router-link> | 
   </div>
 </template>
 

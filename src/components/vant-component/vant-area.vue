@@ -3,7 +3,7 @@
 <!-- 案列: 
   1.引入: import vantarea from '@/components/vant-component/vant-area'
   2.注册: 'vant-area': vantarea
-  3.使用: <vant-area label="" placeholder="" inputAlign="" propBoolean="" propMsg="" v-bind:modelfeild.sync=""  flag="" position="" overlay="" round="" title="" columnsNum=""></vant-area>
+  3.使用: <vant-area label="" placeholder="" inputAlign="" propBoolean="" propMsg="" v-bind:modelfeild.sync=""  flag="" position="" overlay="" round="" proportion="" title="" columnsNum=""></vant-area>
 -->
 <!-- 说明: 
   label: label标题
@@ -15,10 +15,13 @@
   position: 弹出位置，可选值为 top bottom right left （默认: bottom）
   overlay: 是否显示遮罩层（默认: true）
   round: 是否显示圆角（默认: true）
+  proportion:  弹框高度（默认: 自适应）
   title: 弹出框标题（默认: 选择省市区）
   columnsNum: 显示列数，3-省市区，2-省市，1-省
 -->
-<!-- 注意: 暂无 -->
+<!-- 注意: 
+  proportion: 百分比
+ -->
 
 <template>
   <div>
@@ -32,7 +35,7 @@
       @click="clickShow"
       :rules="(propBoolean === 'true')? [{ required: true, message: propMsg }] : []"
       :disabled="(flag === 'view'|| flag === 'handle' )? true : false"/>
-    <van-popup v-model="showArea" :position="position" :overlay="overlay" :round="round" >
+    <van-popup v-model="showArea" :position="position" :overlay="overlay" :round="round" :style="`height: ${proportion};`" >
       <van-area
       :title="title"
       :area-list="areaList"
@@ -85,6 +88,9 @@
       round: {
         type: Boolean,
         default: true
+      },
+      proportion: {
+        type: String
       },
       title: {
         type: String,

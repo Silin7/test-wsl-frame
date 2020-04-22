@@ -6,7 +6,7 @@
   3.使用: <vant-area  typeme= "" label="" placeholder="" inputAlign="" propBoolean="" propMsg="" v-bind:modelfeild.sync="" flag="" position="" overlay="" round="" title="" proportion=""></vant-area>
 -->
 <!-- 说明: 
-  typeme: single（单个）、multiple（多选）、range（区间日期）
+  typeme: datetime（yyyy-mm-dd hh:mm:ss）、date（yyyy-mm-dd）、year-month（yyyy-mm）
   label: label标题
   placeholder: 提示（默认: 选择省市区）
   inputAlign: 字体对齐方式 (默认: center)
@@ -17,7 +17,7 @@
   overlay: 是否显示遮罩层（默认: true）
   round: 是否显示圆角（默认: true）
   title: 弹出框标题（默认: 请选择）
-  proportion:  弹框高度（默认: 60%）
+  proportion:  弹框高度（默认: 自适应）
 -->
 <!-- 注意: 
   proportion: 百分比
@@ -38,7 +38,8 @@
       :rules="(propBoolean === 'true')? [{ required: true, message: propMsg }] : []"
       :disabled="(flag === 'view'|| flag === 'handle' )? true : false"/>
       <van-popup v-model="showArea" :position="position" :overlay="overlay" :round="round" :style="`height: ${proportion};`" >
-        <van-datetime-picker :type="typeme" :title="title" v-model="currentDate" :min-date="minDate" :max-date="maxDate" @cancel="cancelConfirm" @confirm="setAreaConfirm"/>
+        <van-datetime-picker v-if="typeme !== 'time'" :type="typeme" :title="title" v-model="currentDate" :min-date="minDate" :max-date="maxDate" @cancel="cancelConfirm" @confirm="setAreaConfirm"/>
+        <van-datetime-picker v-if="typeme === 'time'" type="time" :title="title" v-model="currentTime" @cancel="cancelConfirm" @confirm="setAreaConfirm"/>
       </van-popup>
   </div>
 </template>
@@ -111,6 +112,7 @@
         showArea: false,
         modelfeildme: '',
         iconClose: '',
+        currentTime: '12:00',
         currentDate: new Date(),
         minDate: new Date(1970, 0, 1),
         maxDate: new Date(9999, 12, 31)
@@ -146,12 +148,16 @@
         this.showArea = false;
         this.$emit('update:modelfeild', this.modelfeildme)
       },
+      // 日期、时间格式函数
       formatDate(date) {
         if (this.typeFlag === 'datetime') {
           return `${date.getFullYear()}-${date.getMonth()+1 > 9 ? date.getMonth()+1 : '0'+(date.getMonth()+1)}-${date.getDate() > 9 ? date.getDate() : '0'+date.getDate()} ${date.getHours() > 9 ? date.getHours(): '0'+date.getHours()}:${date.getMinutes() > 9 ? date.getMinutes(): '0'+date.getMinutes()}:00`;
         }
         if (this.typeFlag === 'date') {
           return `${date.getFullYear()}-${date.getMonth()+1 > 9 ? date.getMonth()+1 : '0'+(date.getMonth()+1)}-${date.getDate() > 9 ? date.getDate() : '0'+date.getDate()}`;
+        }
+        if (this.typeFlag === 'time') {
+          return `${date}`
         }
         if (this.typeFlag === 'year-month') {
           return `${date.getFullYear()}-${date.getMonth()+1 > 9 ? date.getMonth()+1 : '0'+(date.getMonth()+1)}`;

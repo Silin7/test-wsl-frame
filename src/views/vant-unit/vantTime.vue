@@ -1,7 +1,7 @@
 
 <template>
   <div>
-    <vant-time label="日历选择" placeholder="日历选择" inputAlign="right" v-bind:modelfeild.sync="mainModel.aaa" typeme="datetime"></vant-time>
+    <vant-time label="日历选择" placeholder="日历选择" inputAlign="right" v-bind:modelfeild.sync="mainModel.aaa" typeme="time"></vant-time>
   </div>
 </template>
 

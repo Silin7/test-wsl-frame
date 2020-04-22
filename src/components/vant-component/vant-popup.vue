@@ -1,13 +1,13 @@
 <!-- creat by silin.wang 20.04.20 -->
-<!-- 表单组件 - area地区选择器 -->
+<!-- 表单组件 - popup底部选择器 -->
 <!-- 案列: 
-  1.引入: import vantarea from '@/components/vant-component/vant-area'
-  2.注册: 'vant-area': vantarea
-  3.使用: <vant-area label="" placeholder="" inputAlign="" propBoolean="" propMsg="" v-bind:modelfeild.sync=""  flag="" position="" overlay="" round="" proportion="" title="" dataList=""></vant-area>
+  1.引入: import vantpopup from '@/components/vant-component/vant-popup'
+  2.注册: 'vant-popup': vantpopup
+  3.使用: <vant-popup label="" placeholder="" inputAlign="" propBoolean="" propMsg="" v-bind:modelfeild.sync=""  flag="" position="" overlay="" round="" proportion="" title="" dataList=""></vant-popup>
 -->
 <!-- 说明: 
   label: label标题
-  placeholder: 提示（默认: 选择省市区）
+  placeholder: 提示（默认: 请选择）
   inputAlign: 字体对齐方式 (默认: center)
   propBoolean: 是否必填（默认: true）
   propMsg: 必填提示信息（默认: 请输入）
@@ -16,7 +16,7 @@
   overlay: 是否显示遮罩层（默认: true）
   round: 是否显示圆角（默认: true）
   proportion:  弹框高度（默认: 自适应）
-  title: 弹出框标题（默认: 选择省市区）
+  title: 弹出框标题（默认: 请选择）
   dataList: picker数据列表 (默认: 空数组)
 -->
 <!-- 注意: 
@@ -45,7 +45,7 @@
 
 <script>
   export default {
-    name: 'vantarea',
+    name: 'vantpopup',
     props: {
       label: {
         type: String

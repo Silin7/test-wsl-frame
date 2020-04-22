@@ -1,5 +1,5 @@
 <!-- creat by silin.wang 20.04.20 -->
-<!-- 表单组件 - uploader单选 -->
+<!-- 表单组件 - uploader上传文件 -->
 <!-- 案列: 
   1.引入: import vantuploader from '@/components/vant-component/vant-uploader'
   2.注册: 'vant-uploader': vantuploader

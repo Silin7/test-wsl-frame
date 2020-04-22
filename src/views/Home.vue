@@ -21,6 +21,7 @@
     <router-link to="vantPopup">vantPopup</router-link> | 
     <router-link to="vantDate">vantDate</router-link> | 
     <router-link to="vantTime">vantTime</router-link> | 
+    <router-link to="vantCard">vantCard</router-link> | 
   </div>
 </template>
 

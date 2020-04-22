@@ -1,9 +1,9 @@
 <!-- creat by silin.wang 20.04.20 -->
 <!-- 表单组件 - area地区选择器 -->
 <!-- 案列: 
-  1.引入: import vantarea from '@/components/vant-component/vant-area'
-  2.注册: 'vant-area': vantarea
-  3.使用: <vant-area  typeme= "" label="" placeholder="" inputAlign="" propBoolean="" propMsg="" v-bind:modelfeild.sync="" flag="" position="" overlay="" round="" title="" proportion=""></vant-area>
+  1.引入: import vanttime from '@/components/vant-component/vant-time'
+  2.注册: 'vant-time': vanttime
+  3.使用: <vant-time  typeme= "" label="" placeholder="" inputAlign="" propBoolean="" propMsg="" v-bind:modelfeild.sync="" flag="" position="" overlay="" round="" title="" proportion=""></vant-time>
 -->
 <!-- 说明: 
   typeme: datetime（yyyy-mm-dd hh:mm:ss）、date（yyyy-mm-dd）、year-month（yyyy-mm）
@@ -25,7 +25,6 @@
 
 <template>
   <div>
-
     <van-field
       readonly
       :label="label"
@@ -46,7 +45,7 @@
 
 <script>
   export default {
-    name: 'vantarea',
+    name: 'vanttime',
     props: {
       typeme: {
         type: String,

@@ -1,5 +1,5 @@
-<!-- creat by silin.wang 20.04.20 -->
-<!-- 表单组件 - area地区选择器 -->
+<!-- creat by silin.wang 20.04.21 -->
+<!-- 表单组件 - date日期选择器 -->
 <!-- 案列: 
   1.引入: import vantarea from '@/components/vant-component/vant-area'
   2.注册: 'vant-area': vantarea
@@ -8,7 +8,7 @@
 <!-- 说明: 
   typeme: single（单个）、multiple（多选）、range（区间日期）
   label: label标题
-  placeholder: 提示（默认: 选择省市区）
+  placeholder: 提示（默认: 请选择）
   inputAlign: 字体对齐方式 (默认: center)
   propBoolean: 是否必填（默认: true）
   propMsg: 必填提示信息（默认: 请输入）
@@ -16,7 +16,7 @@
   position: 弹出位置，可选值为 top bottom right left （默认: bottom）
   overlay: 是否显示遮罩层（默认: true）
   round: 是否显示圆角（默认: true）
-  title: 弹出框标题（默认: 选择省市区）
+  title: 弹出框标题（默认: 请选择）
   color: 颜色（默认: #0070F4）
   proportion:  弹框高度（默认: 60%）
 -->

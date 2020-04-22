@@ -1,4 +1,4 @@
-<!-- creat by silin.wang 20.04.20 -->
+<!-- creat by silin.wang 20.04.21 -->
 <!-- 表单组件 - area地区选择器 -->
 <!-- 案列: 
   1.引入: import vantarea from '@/components/vant-component/vant-area'
@@ -56,7 +56,7 @@
       },
       placeholder: {
         type: String,
-        default: '选择省市区'
+        default: '请选择'
       },
       inputAlign: {
         type: String,
@@ -94,7 +94,7 @@
       },
       title: {
         type: String,
-        default: '选择省市区'
+        default: '请选择'
       },
       columnsNum: {
         type: String | Number,

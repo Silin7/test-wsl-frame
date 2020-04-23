@@ -29,6 +29,7 @@
   text-overflow:ellipsis;
   white-space: nowrap;
 }
+/* 初始样式，必须要有 */
 .vantCard-cellTitle span:nth-child(2){
   display: inline-block;
   width: 61%;
@@ -38,6 +39,7 @@
   text-overflow:ellipsis;
   white-space: nowrap;
 }
+/* 醒目 蓝色 方块 */
 .vantCard-stateTitle span:nth-child(2){
   display: inline-block;
   width: 80px;

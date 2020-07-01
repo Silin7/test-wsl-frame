@@ -1,18 +1,18 @@
 <template>
   <div>
-    <vant-date label="" placeholder="" v-bind:modelfeild.sync="vantdate"></vant-date>
+    <vant-area label="选择" placeholder="请选择地区" v-bind:modelfeild.sync="vantarea" ></vant-area>
   </div>
 </template>
 
 <script>
-import vantdate from '@/components/vant-components/vant-date'
+import vantarea from '@/components/vant-components/vant-area'
 export default {
   components: {
-    'vant-date': vantdate 
+    'vant-area': vantarea 
   },
   data() {
     return {
-      vantdate: ''
+      vantarea: ''
     }
   }
 }

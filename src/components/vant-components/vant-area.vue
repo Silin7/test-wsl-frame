@@ -1,17 +1,16 @@
 <!-- creat by silin.wang 20.04.21 -->
-<!-- 表单组件 - area地区选择器 -->
+<!-- vant组件 - area地区选择器 -->
 <!-- 案列: 
   1.引入: import vantarea from '@/components/vant-components/vant-area'
   2.注册: 'vant-area': vantarea
-  3.使用: <vant-area label="" placeholder="" inputAlign="" propBoolean="" propMsg="" v-bind:modelfeild.sync=""  flag="" position="" overlay="" round="" proportion="" title="" columnsNum=""></vant-area>
+  3.使用: <vant-area label="" placeholder="" v-bind:modelfeild.sync="" ></vant-area>
 -->
 <!-- 说明: 
   label: label标题
   placeholder: 提示（默认: 选择省市区）
   inputAlign: 字体对齐方式 (默认: center)
-  propBoolean: 是否必填（默认: true）
-  propMsg: 必填提示信息（默认: 请输入）
-  flag: 是否禁用 （禁用: 'view' 'handle'）
+  propMsg: 必填提示信息
+  flag: 是否禁用 （禁用: 'view'）
   position: 弹出位置，可选值为 top bottom right left （默认: bottom）
   overlay: 是否显示遮罩层（默认: true）
   round: 是否显示圆角（默认: true）
@@ -32,10 +31,9 @@
       :placeholder="placeholder"
       :input-align="inputAlign"
       :value="modelfeildme"
-      @click="clickShow"
-      :required="propBoolean === 'true' ? true : false"
       :error-message="propMsg"
-      :disabled="(flag === 'view'|| flag === 'handle' )? true : false"/>
+      :disabled="flag === 'view' ? true : false"
+      @click="clickShow"/>
     <van-popup v-model="showArea" :position="position" :overlay="overlay" :round="round" :style="`height: ${proportion};`" >
       <van-area
       :title="title"
@@ -56,16 +54,11 @@
         type: String
       },
       placeholder: {
-        type: String,
-        default: '请选择'
+        type: String
       },
       inputAlign: {
         type: String,
-        default: 'center'
-      },
-      propBoolean: {
-        type: String,
-        default: 'true'
+        default: 'right'
       },
       propMsg: {
         type: String,
@@ -95,7 +88,7 @@
       },
       title: {
         type: String,
-        default: '请选择'
+        default: '请选择地区'
       },
       columnsNum: {
         type: String | Number,
@@ -123,10 +116,11 @@
     },
     methods: {
       clickShow() {
-        if (this.flag !== 'view' && this.flag !== 'handle') {
+        if (this.flag !== 'view') {
           this.showArea = true
         }
       },
+      // 确定按钮
       setAreaConfirm(values) {
         this.modelfeildme = values.map((item) => item.name).join(' / ');
         this.showArea = false;

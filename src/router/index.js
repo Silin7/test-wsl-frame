@@ -7,6 +7,7 @@ Vue.use(VueRouter)
 const routes = [
   { path: '/', name: 'Home', component: Home }, 
   { path: '/home', name: 'home', component: () => import('../views/Home.vue') },
+  { path: '/test', name: 'test', component: () => import('../views/test.vue') },
   // element 组件
   { path: '/radio', name: 'radio', component: () => import('../views/element-unit/radio.vue') },
   { path: '/checkbox', name: 'checkbox', component: () => import('../views/element-unit/checkbox.vue') },

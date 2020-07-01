@@ -1,9 +1,9 @@
 <!-- creat by silin.wang 20.05.11 -->
-<!-- 表单组件 - page 输入框 -->
+<!-- vant组件 - page分页 -->
 <!-- 案列: 
   1.引入: import vantpage from '@/components/vant-components/vant-page'
   2.注册: 'vant-page': vantpage 
-  3.使用: <vant-page v-bind:modelfeild.sync="currentPage" :totalItems="totalItems" @update:changePage="changePage"></vant-page>
+  3.使用: <vant-page v-bind:modelfeild.sync="" :totalItems=""></vant-page></vant-page>
 -->
 <!-- 说明: 
   currentPage: 当前页
@@ -21,9 +21,7 @@
     :show-page-size="3"
     force-ellipses
     @change="changePage"
-    v-if="totalItems > 10 ? true : false"
-    class="vantPage"
-  />
+    v-if="totalItems > 10 ? true : false"/>
 </template>
 
 <script>
@@ -56,19 +54,8 @@
     },
     methods: {
       changePage (val) {
-        this.$emit('update:changePage', val)
+        this.$emit('update:modelfeild', val)
       }
     }
   }
 </script>
-
-<style lang="scss">
-// .vantPage{
-//   width: 100vw;
-//   position: absolute;
-//   bottom: 0;
-//   .van-pagination__item--disabled {
-//     opacity: 1;
-//   }
-// }
-</style>

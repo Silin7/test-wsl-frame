@@ -1,22 +1,19 @@
 <template>
-  <div>
-    <vant-card :indexme="indexme" :itemTitle="itemTitle" :itemContent="itemContent" :dataList="dblistData" :itemStyle="itemStyle"></vant-card>
+  <div>{{currentPage}}
+    <vant-page v-bind:modelfeild.sync="currentPage" :totalItems="totalItems"></vant-page>
   </div>
 </template>
 
 <script>
-import vantcard from '@/components/vant-components/vant-card'
+import vantpage from '@/components/vant-components/vant-page'
 export default {
   components: {
-    'vant-card': vantcard
+    'vant-page': vantpage 
   },
   data() {
     return {
-      indexme: 3,
-      itemTitle: ['物料', '供应商', '状态'],
-      itemContent: ['maktx', 'suppliername', 'state'],
-      dblistData: [{maktx: '物料1', suppliername: '供应商1', state: '状态1'}, {maktx: '物料2', suppliername: '供应商2', state: '状态2'}, {maktx: '物料3', suppliername: '供应商3', state: '状态3'}],
-      itemStyle: ['vantCard-cellTitle', 'vantCard-cellTitle', 'vantCard-cellTitle vantCard-stateTitle'],
+      currentPage: 1,
+      totalItems: 100,
     }
   }
 }

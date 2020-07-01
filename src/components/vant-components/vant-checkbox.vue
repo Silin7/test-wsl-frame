@@ -1,5 +1,5 @@
 <!-- creat by silin.wang 20.04.20 -->
-<!-- vant表单组件 - checkbox多选 -->
+<!-- vant组件 - checkbox多选 -->
 <!-- 案列: 
   1.引入: import vantcheckbox from '@/components/vant-components/vant-checkbox'
   2.注册: 'vant-checkbox': vantcheckbox

@@ -1,5 +1,5 @@
 <!-- creat by silin.wang 20.04.20 -->
-<!-- vant表单组件 - radio单选 -->
+<!-- vant组件 - radio单选 -->
 <!-- 案列: 
   1.引入: import vantradio from '@/components/vant-components/vant-radio'
   2.注册: 'vant-radio': vantradio

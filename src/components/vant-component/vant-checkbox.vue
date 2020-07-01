@@ -24,7 +24,7 @@
     <template #input>
       <van-checkbox-group v-model="modelfeildme" :direction="direction" @change="setCheckbox" :disabled="(flag === 'view'|| flag === 'handle' ) ? true : false" :max="max">
         <van-checkbox v-for="(item, index) in dataList" :name="item.value" :key="index" :shape="shape" :icon-size="iconSize" :checked-color="checkedColor">
-          {{item.lable}}
+          {{item.label}}
         </van-checkbox>
       </van-checkbox-group>
     </template>

@@ -34,7 +34,7 @@
           aaa: '11',
           bbb: ''
         },
-        dataList: [{lable: '上海', value: 'SH'}, {lable: '北京', value: 'BJ'}, {lable: '广州', value: 'GZ'}, {lable: '深圳', value: 'SZ'}]
+        dataList: [{label: '上海', value: 'SH'}, {label: '北京', value: 'BJ'}, {label: '广州', value: 'GZ'}, {label: '深圳', value: 'SZ'}]
       }
     },
     methods: {

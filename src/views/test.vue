@@ -1,19 +1,23 @@
 <template>
   <div>
-    <vant-radio label="单选" v-bind:modelfeild.sync="radio" flag="" ></vant-radio>
+    <vant-checkbox label="多选" v-bind:modelfeild.sync="checkbox" :checkboxData="checkboxData" flag="" max="2"></vant-checkbox>
   </div>
 </template>
 
 <script>
-import vantRadio from '../components/vant-components/vant-radio'
+import vantcheckbox from '../components/vant-components/vant-checkbox'
 export default {
   components: {
-    'vant-radio': vantRadio
+    'vant-checkbox': vantcheckbox
   },
   data() {
     return {
-      radio: '',
-      
+      checkbox: [],
+      checkboxData: [
+        { label: '选择1', value: '1'},
+        { label: '选择2', value: '2'},
+        { label: '选择3', value: '3'},
+      ]
     }
   }
 }

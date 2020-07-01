@@ -1,19 +1,18 @@
 <template>
-  <div>{{currentPage}}
-    <vant-page v-bind:modelfeild.sync="currentPage" :totalItems="totalItems"></vant-page>
+  <div>
+    <vant-date label="" placeholder="" v-bind:modelfeild.sync="vantdate"></vant-date>
   </div>
 </template>
 
 <script>
-import vantpage from '@/components/vant-components/vant-page'
+import vantdate from '@/components/vant-components/vant-date'
 export default {
   components: {
-    'vant-page': vantpage 
+    'vant-date': vantdate 
   },
   data() {
     return {
-      currentPage: 1,
-      totalItems: 100,
+      vantdate: ''
     }
   }
 }

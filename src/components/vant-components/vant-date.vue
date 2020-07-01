@@ -1,22 +1,21 @@
 <!-- creat by silin.wang 20.04.21 -->
-<!-- 表单组件 - date日期选择器 -->
+<!-- vant组件 - date日期选择器 -->
 <!-- 案列: 
-  1.引入: import vantarea from '@/components/vant-components/vant-date'
-  2.注册: 'vant-date': vantarea
-  3.使用: <vant-date typeme= "" label="" placeholder="" inputAlign="" propBoolean="" propMsg="" v-bind:modelfeild.sync="" flag="" position="" overlay="" round="" title="" color="" proportion=""></vant-date>
+  1.引入: import vantdate from '@/components/vant-components/vant-date'
+  2.注册: 'vant-date': vantdate
+  3.使用: <vant-date label="" placeholder="" v-bind:modelfeild.sync="vantdate"></vant-date>
 -->
 <!-- 说明: 
   typeme: single（单个-默）、multiple（多选）、range（区间日期）
   label: label标题
-  placeholder: 提示（默认: 请选择）
-  inputAlign: 字体对齐方式 (默认: center)
-  propBoolean: 是否必填（默认: true）
-  propMsg: 必填提示信息（默认: 请输入）
-  flag: 是否禁用 （禁用: 'view' 'handle'）
+  placeholder: 提示
+  inputAlign: 字体对齐方式 (默认: right)
+  propMsg: 必填提示信息
+  flag: 是否禁用 （禁用: 'view'）
   position: 弹出位置，可选值为 top bottom right left （默认: bottom）
   overlay: 是否显示遮罩层（默认: true）
   round: 是否显示圆角（默认: true）
-  title: 弹出框标题（默认: 请选择）
+  title: 弹出框标题（默认: 请选择日期）
   color: 颜色（默认: #1A7D70)
   proportion:  弹框高度（默认: 60%）
 -->
@@ -32,17 +31,27 @@
       :value="modelfeildme"
       :placeholder="placeholder"
       :input-align="inputAlign"
-      @click="clickShow"
-      :required="propBoolean === 'true' ? true : false"
       :error-message="propMsg"
-      :disabled="(flag === 'view'|| flag === 'handle' )? true : false"/>
-    <van-calendar v-model="showArea" :type="typeme" :position="position" :overlay="overlay" :round="round" :min-date="minDate" :max-date="maxDate" :title="title" :color="color" :style="`height: ${proportion};`" @confirm="setAreaConfirm" />
+      :disabled="flag === 'view' ? true : false"
+      @click="clickShow"/>
+    <van-calendar
+      v-model="showDate"
+      :type="typeme"
+      :position="position"
+      :overlay="overlay"
+      :round="round"
+      :min-date="minDate"
+      :max-date="maxDate"
+      :title="title"
+      :color="color"
+      :style="`height: ${proportion};`"
+      @confirm="setAreaConfirm" />
   </div>
 </template>
 
 <script>
   export default {
-    name: 'vantarea',
+    name: 'vantdate',
     props: {
       typeme: {
         type: String,
@@ -52,16 +61,11 @@
         type: String
       },
       placeholder: {
-        type: String,
-        default: '请选择'
+        type: String
       },
       inputAlign: {
         type: String,
-        default: 'center'
-      },
-      propBoolean: {
-        type: String,
-        default: 'true'
+        default: 'right'
       },
       propMsg: {
         type: String,
@@ -88,7 +92,7 @@
       },
       title: {
         type: String,
-        default: '请选择'
+        default: '请选择日期'
       },
       proportion: {
         type: String,
@@ -110,7 +114,7 @@
     data() {
       return {
         typeFlag: '',
-        showArea: false,
+        showDate: false,
         modelfeildme: '',
         minDate: new Date(2020, 0, 1),
         maxDate: new Date(2060, 12, 31)
@@ -124,9 +128,9 @@
     methods: {
       // 弹出框
       clickShow() {
-        if (this.flag !== 'view' && this.flag !== 'handle') {
+        if (this.flag !== 'view') {
           this.modelfeildme = ''
-          this.showArea = true
+          this.showDate = true
         }
       },
       // 确定按钮
@@ -139,15 +143,16 @@
           date.forEach(item => {
             dateArry.push(this.formatDate(item))
           })
-          this.modelfeildme = dateArry.join(' - ')
+          this.modelfeildme = dateArry.join(' , ')
         }
         if (this.typeFlag === 'range') {
           const [start, end] = date;
-          this.modelfeildme = `${this.formatDate(start)} - ${this.formatDate(end)}`;
+          this.modelfeildme = `${this.formatDate(start)} 至 ${this.formatDate(end)}`;
         }
-        this.showArea = false;
+        this.showDate = false;
         this.$emit('update:modelfeild', this.modelfeildme)
       },
+      // 格式化日期
       formatDate(date) {
         return `${date.getFullYear()}-${date.getMonth()+1 > 9 ? date.getMonth()+1 : '0'+(date.getMonth()+1)}-${date.getDate() > 9 ? date.getDate() : '0'+date.getDate()}`;
       }

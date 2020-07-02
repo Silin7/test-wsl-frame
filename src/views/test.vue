@@ -1,30 +1,26 @@
 <template>
-  <div>
-    <vant-field label="field1" placeholder="field1" v-bind:modelfeild.sync="field1" @setField="setField1" :errorMsg="errorMsg1"></vant-field>
+  <div>{{popups}}
+    <vant-popups label="popups" placeholder="popups" v-bind:modelfeild.sync="popups" :dataList="dataList_Array"></vant-popups>
   </div>
 </template>
 
 <script>
-import vantfield from '@/components/vant-components/vant-field'
+import vantpopups from '@/components/vant-components/vant-popups'
 export default {
   components: {
-    'vant-field': vantfield
+    'vant-popups': vantpopups
   },
   data() {
     return {
-      field1: '',
-      errorMsg1: '',
+      popups: ['1', '4'],
+      dataList_Array: [
+        { value: '标题1', code: '1', id: '1', iscommit: false },
+        { value: '标题2', code: '2', id: '2', iscommit: false },
+        { value: '标题3', code: '3', id: '3', iscommit: false },
+        { value: '标题4', code: '4', id: '4', iscommit: false },
+        { value: '标题5', code: '5', id: '5', iscommit: false }
+      ],
     }
-  },
-  methods: {
-    setField1(value) {
-      if (value === '123') {
-        this.errorMsg1 = '格式错误'
-      } else {
-        this.errorMsg1 = ''
-      }
-    },
-    
   }
 }
 </script>

@@ -1,28 +1,29 @@
 <!-- creat by silin.wang 20.04.20 -->
-<!-- 表单组件 - popup底部选择器 -->
+<!-- 表单组件 - popups多选弹出框 -->
 <!-- 案列: 
-  1.引入: import vantpopup from '@/components/vant-components/vant-popup'
-  2.注册: 'vant-popup': vantpopup
-  3.使用: <vant-popup label="" placeholder="" inputAlign="" propBoolean="" propMsg="" v-bind:modelfeild.sync=""  flag="" position="" overlay="" round="" proportion="" title="" dataList_label=""></vant-popup>
+  1.引入: import vantpopups from '@/components/vant-components/vant-popups'
+  2.注册: 'vant-popups': vantpopups
+  3.使用: <vant-popups label="" placeholder="" v-bind:modelfeild.sync="" :dataList=""></vant-popups>
 -->
 <!-- 说明: 
   label: label标题
   placeholder: 提示（默认: 请选择）
   inputAlign: 字体对齐方式 (默认: right)
-  propBoolean: 是否必填（默认: true）
   propMsg: 必填提示信息（默认: 请输入）
-  flag: 是否禁用 （禁用: 'view' 'handle'）
+  flag: 是否禁用 （禁用: 'view'）
   position: 弹出位置，可选值为 top bottom right left （默认: bottom）
   overlay: 是否显示遮罩层（默认: true）
   round: 是否显示圆角（默认: true）
   proportion:  弹框高度（默认: 自适应）
   title: 弹出框标题（默认: 请选择）
   dataList: picker数据列表 (默认: 空数组)
-  isIconClose: 是否显示关闭按钮(默认: false)
+  isString: 定义参数类型(字符串 或 数组)
 -->
 <!-- 注意: 
   proportion: 百分比
   get-container="body"  挂载在bady节点上
+  dataList: (value, code, id, iscommit)4个参数,缺一不可
+  isString: 为true时,传modelstring; 为false时,传modelfeild
  -->
 
 <template>
@@ -34,48 +35,40 @@
       :placeholder="placeholder"
       :input-align="inputAlign"
       @click="clickShow"
-      :right-icon="iconClose"
-      @click-right-icon.stop="clearClick"
-      :required="propBoolean === 'true' ? true : false"
       :error-message="propMsg"
-      :disabled="(flag === 'view'|| flag === 'handle' )? true : false"/>
+      :disabled="flag === 'view' ? true : false"/>
     <van-popup v-model="showArea" :position="position" :overlay="overlay" :round="round" :style="`height: ${proportion};`" get-container="body">
-        <div class="btnStatusBox">
-          <div class="btnStatus" @click="getallstatus(true)" v-show="!showicon">全选</div>
-          <div class="btnStatus" @click="getallstatus(false)" v-show="showicon">反选</div>
-          <div style="font-size: 14px; line-height: 34px;">{{title}}</div>
-          <div class="btnStatus" @click="setAreaConfirm">确定</div>
+      <div class="btnStatusBox">
+        <div class="btnStatus" @click="getallstatus(true)" v-show="!showicon">全选</div>
+        <div class="btnStatus" @click="getallstatus(false)" v-show="showicon">反选</div>
+        <div style="font-size: 14px; line-height: 34px;">{{title}}</div>
+        <div class="btnStatus" @click="setAreaConfirm">确定</div>
+      </div>
+      <van-cell v-for="(item, index) in dataListme" :key="index">
+        <div style="display: flex; align-items: center;">
+          <img src="./images/checked.png" v-show="item.iscommit" @click="changeicon(item, false)">
+          <img src="./images/uncheck.png" v-show="!item.iscommit" @click="changeicon(item, true)">
+          <div class="optionStyle" @click="changeItemIcon(item)">{{item.value}}</div>
         </div>
-        <van-cell v-for="(item, index) in dataListme" :key="index">
-          <div style="display: flex; align-items: center;">
-            <img src="../../assets/checked.png"  v-show="item.iscommit" @click="changeicon(item, false)">
-            <img src="../../assets/uncheck.png"  v-show="!item.iscommit" @click="changeicon(item, true)">
-            <div class="optionStyle" @click="changeItemIcon(item)">{{item.value}}</div>
-          </div>
-        </van-cell>
+      </van-cell>
     </van-popup>
   </div>
 </template>
 
 <script>
-  import { setTimeout } from 'timers';
+  import { setTimeout } from 'timers'
   export default {
-    name: 'vantpopup',
+    name: 'vantpopups',
     props: {
       label: {
         type: String
       },
       placeholder: {
-        type: String,
-        default: '请选择'
+        type: String
       },
       inputAlign: {
         type: String,
         default: 'right'
-      },
-      propBoolean: {
-        type: String,
-        default: 'true'
       },
       propMsg: {
         type: String,
@@ -86,6 +79,10 @@
         default: function() {
           return []
         }
+      },
+      modelstring: {
+        type: String,
+        default: ''
       },
       flag: {
         type: String
@@ -125,16 +122,18 @@
       }
     },
     mounted() {
+      this.modelArray = this.modelfeild
       setTimeout(() => {
         if (this.isString === true) {
-          this.modelfeild = this.modelfeild.split(',')
+          this.isStringme = true
+          this.modelArray = this.modelstring.split(',')
         }
         if (this.dataList) {
           this.dataListme = this.dataList
         }
-        if (this.modelfeild.length > 0 && this.dataList) {
+        if (this.modelArray.length > 0 && this.dataList) {
           let childLabel = []
-          this.modelfeild.forEach(item1 => {
+          this.modelArray.forEach(item1 => {
             this.dataListme.forEach(item2 => {
               if (item1 === item2.code) {
                 item2.iscommit = true
@@ -148,27 +147,19 @@
     },
     data() {
       return {
-        isString: false,
+        isStringme: false,
         showicon: false,
         showArea: false,
         iconClose: '',
         dataListme: [],
         modelfeildme: '',
-      }
-    },
-    watch: {
-      'modelfeildme'(newVal, oldVal) {
-        if (newVal !== '' && this.isIconClose) {
-          this.iconClose = 'close'
-        } else {
-          this.iconClose = ''
-        }
+        modelArray: [],
       }
     },
     methods: {
       // 弹出框
       clickShow() {
-        if (this.flag !== 'view' && this.flag !== 'handle') {
+        if (this.flag !== 'view') {
           this.showArea = true
         }
       },
@@ -202,18 +193,13 @@
           }
         })
         this.modelfeildme = childLabel.join(', ')
-        if (this.isString) {
+        if (this.isStringme) {
           let childCodeString = childCode.join(',')
-          this.$emit('update:modelfeild', childCodeString)
+          this.$emit('update:modelstring', childCodeString)
         } else {
           this.$emit('update:modelfeild', childCode)
         }
         this.showArea = false
-      },
-      // 清除按钮
-      clearClick() {
-        this.modelfeildme = ''
-        this.$emit('update:modelfeild', [])
       }
     }
   }

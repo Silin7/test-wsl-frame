@@ -16,17 +16,7 @@ const routes = [
   { path: '/date', name: 'date', component: () => import('../views/element-unit/date.vue') },
   { path: '/date-mul',  name: 'date-mul',  component: () => import('../views/element-unit/dateMul.vue') },
   { path: '/input', name: 'input', component: () => import('../views/element-unit/input.vue') },
-  { path: '/input-number', name: 'input-number', component: () => import('../views/element-unit/inputNum.vue') },
-  // vant 组件
-  { path: '/vantRadio', name: 'vantRadio', component: () => import('../views/vant-unit/vantRadio.vue') },
-  { path: '/vantCheckbox', name: 'vantCheckbox', component: () => import('../views/vant-unit/vantCheckbox.vue') },
-  { path: '/vantField', name: 'vantField', component: () => import('../views/vant-unit/vantField.vue') },
-  { path: '/vantUploader', name: 'vantUploader', component: () => import('../views/vant-unit/vantUploader.vue') },
-  { path: '/vantArea', name: 'vantArea', component: () => import('../views/vant-unit/vantArea.vue') },
-  { path: '/vantPopup', name: 'vantPopup', component: () => import('../views/vant-unit/vantPopup.vue') },
-  { path: '/vantDate', name: 'vantDate', component: () => import('../views/vant-unit/vantDate.vue') },
-  { path: '/vantTime', name: 'vantTime', component: () => import('../views/vant-unit/vantTime.vue') },
-  { path: '/vantCard', name: 'vantCard', component: () => import('../views/vant-unit/vantCard.vue') }
+  { path: '/input-number', name: 'input-number', component: () => import('../views/element-unit/inputNum.vue') }
 ]
 
 const router = new VueRouter({

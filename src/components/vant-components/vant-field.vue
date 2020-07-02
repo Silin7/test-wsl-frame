@@ -1,26 +1,27 @@
 <!-- creat by silin.wang 20.04.20 -->
-<!-- 表单组件 - field输入框 -->
+<!-- vant组件 - field输入框 -->
 <!-- 案列: 
   1.引入: import vantfield from '@/components/vant-components/vant-field'
   2.注册: 'vant-field': vantfield
-  3.使用: <vant-field typeme="" label="" placeholder="" inputAlign="" propBoolean="" errorMsg="" v-bind:modelfeild.sync="" rows="" maxlength="" wordLimit="" flag="" readFlag=""></vant-field>
+  3.使用: <vant-field typeme="" label="" placeholder="" v-bind:modelfeild.sync="" @setField="" @blurField="" @clickField=""></vant-field>
 -->
 <!-- 说明: 
   typeme: 判断field框样式【text、tel、digit、number、password、textarea 】（默认: text）
   label: label标题
   placeholder: 提示符
   inputAlign: 字体对齐方式 (默认: right)
-  propBoolean: 是否必填（默认: true）
-  errorMsg: 必填提示信息（默认: 请输入）
+  errorMsg: 必填提示信息
   rows: textarea行数
   maxlength: 允许最多字符数
   wordLimit: 是否显示字数统计
-  flag:  是否禁用 （禁用: 'view' 'handle'）
-  readFlag 是否只读 （禁用: 'view' 'handle'）
+  flag:  是否禁用 （禁用: 'view'）
+  readFlag 是否只读 （禁用: 'view'）
+  setField: 输入框输入时回调函数
+  blurField: 输入框失去焦点时回调函数
+  clickField: 输入框点击时回调函数
 -->
 <!-- 注意: 
   show-word-limit: Boolean类型，需要设置maxlength属性
-  blurInput; 别忘了写
  -->
  
 <template>
@@ -30,17 +31,16 @@
     v-model="modelfeildme"
     :placeholder="placeholder"
     :input-align="inputAlign"
-    @input="setInput"
-    @blur="blurInput"
+    @input="setField"
+    @blur="blurField"
     @click="clickField"
     clearable
     :rows="rows"
     :maxlength="maxlength"
     :show-word-limit="wordLimit"
-    :required="propBoolean === 'true' ? true : false"
     :error-message="errorMsg"
-    :disabled="(flag === 'view'|| flag === 'handle' )? true : false"
-    :readonly="(readFlag === 'view'|| readFlag === 'handle' )? true : false">
+    :disabled="flag === 'view' ? true : false"
+    :readonly="readFlag === 'view' ? true : false">
   </van-field>
 </template>
 
@@ -56,20 +56,14 @@
         type: String
       },
       placeholder: {
-        type: String,
-        default: '请输入'
+        type: String
       },
       inputAlign: {
         type: String,
         default: 'right'
       },
-      propBoolean: {
-        type: String,
-        default: 'true'
-      },
       errorMsg: {
         type: String,
-        default: ''
       },
       modelfeild: {
         type: String,
@@ -109,14 +103,15 @@
       }
     },
     methods: {
-      setInput () {
+      setField () {
         this.$emit('update:modelfeild', this.modelfeildme)
+        this.$emit('setField', this.modelfeildme)
       },
-      blurInput () {
-        this.$emit('blurInput', {  'label': this.label , 'value': this.modelfeildme })
+      blurField () {
+        this.$emit('blurField', this.modelfeildme)
       },
       clickField () {
-        this.$emit('clickField')
+        this.$emit('clickField', this.modelfeildme)
       }
     }
   }

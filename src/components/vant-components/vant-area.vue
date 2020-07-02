@@ -8,7 +8,7 @@
 <!-- 说明: 
   label: label标题
   placeholder: 提示（默认: 选择省市区）
-  inputAlign: 字体对齐方式 (默认: center)
+  inputAlign: 字体对齐方式 (默认: right)
   propMsg: 必填提示信息
   flag: 是否禁用 （禁用: 'view'）
   position: 弹出位置，可选值为 top bottom right left （默认: bottom）
@@ -47,6 +47,7 @@
 </template>
 
 <script>
+  import { Toast } from 'vant';
   export default {
     name: 'vantarea',
     props: {
@@ -122,10 +123,17 @@
       },
       // 确定按钮
       setAreaConfirm(values) {
-        this.modelfeildme = values.map((item) => item.name).join(' / ');
+        let areaFlag = values.some(item => item === undefined)
+        if (!areaFlag) {
+          this.modelfeildme = values.map((item) => item.name).join(' / ');
+        } else {
+          this.modelfeildme = ''
+          Toast.fail('请选择详细信息')
+        }
         this.showArea = false;
         this.$emit('update:modelfeild', this.modelfeildme)
-      }
+      },
+     
     }
   }
 </script>

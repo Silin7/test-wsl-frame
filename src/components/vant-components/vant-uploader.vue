@@ -50,7 +50,7 @@
 <script>
   import axios from 'axios'
   import config from '@/api/baseConfig.js'
-
+  import './style/vant-uploader.scss'
   export default {
     name: 'vantuploader',
     props: {
@@ -149,78 +149,3 @@
     }
   }
 </script>
-
-<style lang="scss" scoped>
-.uploadeBtn  {
-  width: 100px;
-  height: 36px;
-  background-color: #1A7D70;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #FFFFFF;
-  font-weight: 700;
-  border-radius: 5px;
-}
-.file_card {
-  width: 96%;
-  height: 60px;
-  margin: 10px auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #FFFFFF;
-  box-sizing: border-box;
-  position: relative;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
-  padding: 6px 0px 6px 10px;
-  .file_card_information {
-    width: 80%;
-    height: 50px;
-    line-height: 50px;
-    .file_card_information_filetitle {
-      font-size: 12px;
-      display: inline-block;
-      width: 23%;
-      overflow: hidden;
-      text-overflow:ellipsis;
-      white-space: nowrap;
-    }
-    .file_card_information_filename {
-      font-size: 14px;
-      display: inline-block;
-      width: 76%;
-      overflow: hidden;
-      text-overflow:ellipsis;
-      white-space: nowrap;
-    }
-  }
-  .file_card_button {
-    width: 58px;
-    height: 50px;
-    display: flex;
-    flex-flow: column;
-    justify-content: space-around;
-    align-items: center;
-    .file_card_button_delete {
-      font-size: 12px;
-      width: 40px;
-      height: 18px;
-      line-height: 18px;
-      text-align: center;
-      color: #1A7D70;
-      border: 1px solid #1A7D70;
-    }
-    .file_card_button_download {
-      font-size: 12px;
-      width: 40px;
-      height: 18px;
-      line-height: 18px;
-      text-align: center;
-      color: #FFFFFF;
-      background-color: #1A7D70;
-    }
-  }
-}
-</style>

@@ -56,6 +56,7 @@
 </template>
 
 <script>
+  import './style/vant-popups.scss'
   import { setTimeout } from 'timers'
   export default {
     name: 'vantpopups',
@@ -204,28 +205,3 @@
     }
   }
 </script>
-
-<style lang="scss">
-  .btnStatusBox {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #dbdbdb;
-    padding: 5px 10px;
-    .btnStatus {
-      width: 64px;
-      height: 24px;
-      line-height: 24px;
-      text-align: center;
-      font-size: 12px;
-      background-color: #1A7D70;
-      border-radius: 5px;
-      color: #FFFFFF;
-    }
-  }
-  .optionStyle {
-    width: 100%;
-    height: 25px;
-    padding-left: 20px;
-  }
-</style>

@@ -35,6 +35,7 @@
 </template>
 
 <script>
+  import './style/vant-card.scss'
   export default {
     name: 'vantcard',
     props: {
@@ -87,58 +88,3 @@
   }
 </script>
 
-<style lang="scss" scoped>
-.vantCard-cardGroup {
-  width: 96%;
-  margin: 10px auto;
-  padding: 6px 0px 6px 10px;
-  background-color: #FFFFFF;
-  box-sizing: border-box;
-  position: relative;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
-}
-.vantCard-detailButton {
-  position: absolute;
-  top: 50%;
-  right: 10px;
-  margin-top: -10px;
-  color: #1A7D70;
-  font-size: 13px;
-}
-.vantCard-cellTitle {
-  font-size: 14px;
-  margin: 3px 0;
-}
-.vantCard-cellTitle span:first-child {
-  display: inline-block;
-  width: 26%;
-  height: 20px;
-  line-height: 20px;
-  overflow: hidden;
-  text-overflow:ellipsis;
-  white-space: nowrap;
-}
-/* 初始样式，必须要有 */
-.vantCard-cellTitle span:nth-child(2){
-  display: inline-block;
-  width: 61%;
-  height: 20px;
-  line-height: 20px;
-  overflow: hidden;
-  text-overflow:ellipsis;
-  white-space: nowrap;
-}
-/* 醒目 蓝色 方块 */
-.vantCard-stateTitle span:nth-child(2){
-  display: inline-block;
-  width: 80px;
-  height: 18px;
-  text-align: center;
-  line-height: 18px;
-  letter-spacing: 2px;
-  color: #FFFFFF;
-  font-weight: 600;
-  background-color: #1A7D70;
-}
-</style>

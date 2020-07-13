@@ -3,7 +3,7 @@
 <!-- 案列: 
   1.引入: import vantdate from '@/components/vant-components/vant-date'
   2.注册: 'vant-date': vantdate
-  3.使用: <vant-date label="" placeholder="" v-bind:modelfeild.sync="vantdate"></vant-date>
+  3.使用: <vant-date label="" placeholder="" v-bind:modelfeild.sync=""></vant-date>
 -->
 <!-- 说明: 
   typeme: single（单个-默）、multiple（多选）、range（区间日期）

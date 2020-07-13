@@ -125,7 +125,7 @@
       setAreaConfirm(values) {
         let areaFlag = values.some(item => item === undefined)
         if (!areaFlag) {
-          this.modelfeildme = values.map((item) => item.name).join(' / ');
+          this.modelfeildme = values.map((item) => item.name).join('-');
         } else {
           this.modelfeildme = ''
           Toast.fail('请选择详细信息')

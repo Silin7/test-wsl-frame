@@ -6,6 +6,7 @@ Vue.use(VueRouter)
 
 const routes = [
   { path: '/', name: 'Home', component: Home }, 
+  { path: "/404", name: "404", component: () => import('../views/notFound/404.vue') },
   { path: '/home', name: 'home', component: () => import('../views/Home.vue') },
   { path: '/test', name: 'test', component: () => import('../views/test.vue') },
   // element 组件
@@ -16,7 +17,9 @@ const routes = [
   { path: '/date', name: 'date', component: () => import('../views/element-unit/date.vue') },
   { path: '/date-mul',  name: 'date-mul',  component: () => import('../views/element-unit/dateMul.vue') },
   { path: '/input', name: 'input', component: () => import('../views/element-unit/input.vue') },
-  { path: '/input-number', name: 'input-number', component: () => import('../views/element-unit/inputNum.vue') }
+  { path: '/input-number', name: 'input-number', component: () => import('../views/element-unit/inputNum.vue') },
+  // 重定向404，此处需特别注意置于最底部 
+  { path: "*", redirect: "/404" }
 ]
 
 const router = new VueRouter({

@@ -8,7 +8,7 @@ const routes = [
   { path: '/', name: 'Home', component: Home }, 
   { path: "/404", name: "404", component: () => import('../views/notFound/404.vue') },
   { path: '/home', name: 'home', component: () => import('../views/Home.vue') },
-  { path: '/test', name: 'test', component: () => import('../views/test.vue') },
+  { path: '/event-bus', name: 'event-bus', component: () => import('../views/event-bus/event-bus.vue') },
   // element 组件
   { path: '/radio', name: 'radio', component: () => import('../views/element-unit/radio.vue') },
   { path: '/checkbox', name: 'checkbox', component: () => import('../views/element-unit/checkbox.vue') },

@@ -1,7 +1,7 @@
 <template>
   <div>
-    <component is='eventBus1'></component>
-    <component is='eventBus2'></component>
+    <event-bus1></event-bus1>
+    <event-bus2></event-bus2>
   </div>
 </template>
 
@@ -11,8 +11,8 @@ import eventBus1 from './event-bus1.vue'
 import eventBus2 from './event-bus2.vue'
 export default {
   components: {
-    'eventBus1': eventBus1,
-    'eventBus2': eventBus2
+    'event-bus1': eventBus1,
+    'event-bus2': eventBus2,
   }
 }
 </script>

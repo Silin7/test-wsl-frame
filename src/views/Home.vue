@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <router-link to="radio">radio</router-link>
+    <!-- <router-link to="radio">radio</router-link>
     <br/>
     <router-link to="checkbox">checkbox</router-link>
     <br/>
@@ -14,31 +14,10 @@
     <br/>
     <router-link to="input">input</router-link>
     <br/>
-    <router-link to="input-number">input-number</router-link>
+    <router-link to="input-number">input-number</router-link> -->
 
     <div>
-      <button @click="getLogin">111</button>
+    <router-link to="get_url">get_url</router-link>
     </div>
   </div>
 </template>
-
-<script>
-import api from '@/api/api'
-export default {
-  name: 'Home',
-  components: {
-  },
-  methods: {
-    getLogin() {
-      let req = {
-        name: 'silin.wang',
-        password: '123456'
-      }
-      console.log(api)
-      api.apiLogin(req, function (res) {
-        console.log(res)
-      })
-    }
-  }
-}
-</script>

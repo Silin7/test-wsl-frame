@@ -39,7 +39,7 @@ export default {
         name: this.username,
         password: this.password
       }
-      api.apiLogin2(req, function (res) {
+      api.apiLogin(req, function (res) {
         if (res && res.data.code === 0) {
           alert('注册成功')
         } else {

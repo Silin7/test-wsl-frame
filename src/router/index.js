@@ -20,6 +20,7 @@ const routes = [
   // { path: '/input-number', name: 'input-number', component: () => import('../views/element-unit/inputNum.vue') },
   // node-test
   { path: '/get_url', name: 'get_url', component: () => import('../views/node-test/get_url.vue') },
+  { path: '/post_url', name: 'post_url', component: () => import('../views/node-test/post_url.vue') },
   // 重定向404，此处需特别注意置于最底部 
   { path: "*", redirect: "/404" }
 ]

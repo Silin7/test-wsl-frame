@@ -36,8 +36,8 @@ export default {
   methods: {
     onSubmit(values) {
       let req = {
-        name: 'admin',
-        password: '123'
+        name: this.username,
+        password: this.password
       }
       api.apiLogin2(req, function (res) {
         if (res && res.data.code === 0) {

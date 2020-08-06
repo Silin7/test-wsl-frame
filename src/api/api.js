@@ -12,7 +12,8 @@ let api = {
     })
   },
   apiLogin2: function (params, cb) {
-    axios.post('/login/post', params).then((res) => {
+    // axios.post('/login', JSON.stringify(params)).then((res) => {
+    axios.post('/login', params).then((res) => {
       cb(res)
     }).catch((error) => {
       return Promise.reject(error)

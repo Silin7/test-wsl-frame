@@ -2,7 +2,7 @@
   <div class="home">
     <van-form @submit="onSubmit">
       <van-field
-        v-model="username"
+        v-model="name"
         name="用户名"
         label="用户名"
         placeholder="用户名"
@@ -29,14 +29,14 @@ export default {
   },
   data() {
     return {
-      username: '',
+      name: '',
       password: '',
     };
   },
   methods: {
     onSubmit(values) {
       let req = {
-        name: this.username,
+        name: this.name,
         password: this.password
       }
       api.apiLogin2(req, function (res) {

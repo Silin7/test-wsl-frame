@@ -8,7 +8,6 @@ import 'vant/lib/index.css';
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import './styleSheet/index.scss'
-import './styleSheet/vant-card.css'
 
 Vue.use(Vant);
 Vue.use(ElementUI)
